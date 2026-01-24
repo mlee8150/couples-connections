@@ -1,0 +1,154 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Would you rather...",
+      "optionA": "Have the ability to teleport to each other instantly",
+      "optionB": "Have unlimited free flights to visit each other anytime"
+    },
+    {
+      "id": 2,
+      "question": "Would you rather...",
+      "optionA": "Share all your dreams with each other every morning",
+      "optionB": "Share all your meals together virtually every day"
+    },
+    {
+      "id": 3,
+      "question": "Would you rather...",
+      "optionA": "Know exactly what your partner is feeling at all times",
+      "optionB": "Know exactly what your partner is thinking once a day"
+    },
+    {
+      "id": 4,
+      "question": "Would you rather...",
+      "optionA": "Relive your first date together once a year",
+      "optionB": "Get a glimpse of one day in your future together"
+    },
+    {
+      "id": 5,
+      "question": "Would you rather...",
+      "optionA": "Have a love song written about your relationship",
+      "optionB": "Have a painting made that captures your love story"
+    },
+    {
+      "id": 6,
+      "question": "Would you rather...",
+      "optionA": "Be able to cook any meal your partner is craving perfectly",
+      "optionB": "Be able to give the perfect massage whenever they need it"
+    },
+    {
+      "id": 7,
+      "question": "Would you rather...",
+      "optionA": "Spend a romantic week in Paris together",
+      "optionB": "Spend a relaxing week on a private tropical island together"
+    },
+    {
+      "id": 8,
+      "question": "Would you rather...",
+      "optionA": "Always know the perfect gift to give your partner",
+      "optionB": "Always know the perfect words to say when they're upset"
+    },
+    {
+      "id": 9,
+      "question": "Would you rather...",
+      "optionA": "Have a scrapbook that magically fills with your favorite memories",
+      "optionB": "Have a playlist that always plays songs matching your mood together"
+    },
+    {
+      "id": 10,
+      "question": "Would you rather...",
+      "optionA": "Be able to send a hug that your partner can physically feel",
+      "optionB": "Be able to send a kiss that your partner can physically feel"
+    },
+    {
+      "id": 11,
+      "question": "Would you rather...",
+      "optionA": "Have matching tattoos that glow when you think of each other",
+      "optionB": "Have matching jewelry that warms up when your partner misses you"
+    },
+    {
+      "id": 12,
+      "question": "Would you rather...",
+      "optionA": "Never have to say goodbye at the airport again",
+      "optionB": "Always have the most amazing reunion every time you meet"
+    },
+    {
+      "id": 13,
+      "question": "Would you rather...",
+      "optionA": "Be able to watch movies together as if in the same room",
+      "optionB": "Be able to play any video game together as if side by side"
+    },
+    {
+      "id": 14,
+      "question": "Would you rather...",
+      "optionA": "Have your partner write you a love letter every week",
+      "optionB": "Have a 30-minute video call every day guaranteed"
+    },
+    {
+      "id": 15,
+      "question": "Would you rather...",
+      "optionA": "Fall asleep and wake up at the same time as your partner",
+      "optionB": "Share the same dreams while sleeping"
+    },
+    {
+      "id": 16,
+      "question": "Would you rather...",
+      "optionA": "Have a photo booth that captures moments from parallel universes where you're together",
+      "optionB": "Have a crystal ball showing your happiest future moments"
+    },
+    {
+      "id": 17,
+      "question": "Would you rather...",
+      "optionA": "Speak a secret language only you two understand",
+      "optionB": "Communicate telepathically but only about feelings"
+    },
+    {
+      "id": 18,
+      "question": "Would you rather...",
+      "optionA": "Have one perfect day together every month",
+      "optionB": "Have an extra hour added to every video call"
+    },
+    {
+      "id": 19,
+      "question": "Would you rather...",
+      "optionA": "Receive a care package from your partner every week",
+      "optionB": "Send your scent to your partner so they can smell you anytime"
+    },
+    {
+      "id": 20,
+      "question": "Would you rather...",
+      "optionA": "Have unlimited data and best connection quality for video calls forever",
+      "optionB": "Have a hologram device that projects your partner life-sized"
+    },
+    {
+      "id": 21,
+      "question": "Would you rather...",
+      "optionA": "Cook the same meal together virtually every Sunday",
+      "optionB": "Have a virtual movie night with synchronized playback every Friday"
+    },
+    {
+      "id": 22,
+      "question": "Would you rather...",
+      "optionA": "Know your partner's exact location anytime",
+      "optionB": "Know your partner's mood throughout the day"
+    },
+    {
+      "id": 23,
+      "question": "Would you rather...",
+      "optionA": "Receive a 'thinking of you' notification whenever your partner thinks of you",
+      "optionB": "See a heart appear in the sky whenever you both look up at the same time"
+    },
+    {
+      "id": 24,
+      "question": "Would you rather...",
+      "optionA": "Have your favorite photo of you two as a couple projected as a constellation",
+      "optionB": "Have a star officially named after your relationship"
+    },
+    {
+      "id": 25,
+      "question": "Would you rather...",
+      "optionA": "Be able to send voice messages that play as your partner's internal voice",
+      "optionB": "Be able to send text messages that appear in your partner's handwriting"
+    }
+  ]
+}
