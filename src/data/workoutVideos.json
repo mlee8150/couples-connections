@@ -1,0 +1,125 @@
+{
+  "workoutTypes": [
+    "HIIT",
+    "Strength",
+    "Yoga & Stretching",
+    "Dance",
+    "Pilates"
+  ],
+  "durations": ["10 mins", "20 mins", "30 mins"],
+  "videos": {
+    "HIIT": {
+      "10 mins": [
+        { "title": "Cardio HIIT Workout - All Standing - Full Body, No Equipment, No Repeats", "channel": "Nobadaddiction", "url": "https://www.youtube.com/watch?v=PwXUHMKamP8" },
+        { "title": "Full Body HIIT - No Equipment, At Home Workout", "channel": "MadFit", "url": "https://www.youtube.com/watch?v=mVlRIWksyDg" },
+        { "title": "Ultimate Beginners HIIT", "channel": "The Body Coach TV by Joe Wicks", "url": "https://www.youtube.com/watch?v=mVlRIWksyDg" },
+        { "title": "Intense Full Body Tabata | HIIT Cardio | No Equipment | Low Impact Mods", "channel": "Kaleigh Cohen Strength", "url": "https://www.youtube.com/watch?v=BkZz1aZLeII" },
+        { "title": "Mood Boost HIIT Workout - All Standing, No Jumping", "channel": "MonikaFit", "url": "https://www.youtube.com/watch?v=CpVA0TJuDhc" }
+      ],
+      "20 mins": [
+        { "title": "Cardio HIIT Workout - All Standing - Full Body, No Equipment, No Repeats", "channel": "Nobadaddiction", "url": "https://www.youtube.com/watch?v=ce6YfBgdOfU" },
+        { "title": "Full Body HIIT Workout With Weights", "channel": "Heather Robertson", "url": "https://www.youtube.com/watch?v=W8wLcGdQQ30" },
+        { "title": "Advanced HIIT Workout", "channel": "The Body Coach TV by Joe Wicks", "url": "https://www.youtube.com/watch?v=ZDejBiO2o6Y" },
+        { "title": "Full Body HIIT - Sweat Guaranteed - No Equipment", "channel": "Chloe Ting", "url": "https://www.youtube.com/watch?v=RVTvOh1jD00" },
+        { "title": "Low Impact Full Body HIIT Workout (No Equipment + No Jumping)", "channel": "MadFit", "url": "https://www.youtube.com/watch?v=JkVHrA5o23o" }
+      ],
+      "30 mins": [
+        { "title": "Fat Loss HIIT Workout (No Equipment)", "channel": "Dan the HIIT Man", "url": "https://www.youtube.com/watch?v=6bqkk4zk0sU" },
+        { "title": "Intense HIIT Workout For Fat Burn & Cardio No Equipment, No Repeats", "channel": "TIFF x DAN", "url": "https://www.youtube.com/watch?v=4nPKyvKmFi0" },
+        { "title": "No Repeats HIIT Cardio Workout (No Equipment + No Jumping Options)", "channel": "TIFF x DAN", "url": "https://www.youtube.com/watch?v=kJ-3g9pzJdQ" },
+        { "title": "HIIT Cardio Workout With Warm Up - No Equipment At Home", "channel": "SELF", "url": "https://www.youtube.com/watch?v=ml6cT4AZdqI" },
+        { "title": "Advanced HIIT Workout - Full Body, No Equipment, No Repeat", "channel": "growingannanas", "url": "https://www.youtube.com/watch?v=fN2aMTIaSe0" }
+      ]
+    },
+    "Strength": {
+      "10 mins": [
+        { "title": "Core Sculpt - At Home Abs No Equipment", "channel": "MadFit", "url": "https://www.youtube.com/watch?v=uUKAYkQZXko" },
+        { "title": "Arm Workout (No Equipment)", "channel": "BullyJuice", "url": "https://www.youtube.com/watch?v=JUQM3epPGcE" },
+        { "title": "Home Ab Workout (6 Pack Guaranteed!)", "channel": "Fraser Wilson", "url": "https://www.youtube.com/watch?v=uUKAYkQZXko" },
+        { "title": "Lower Body No Equipment Quick HIIT Workout", "channel": "BodyFit By Amy", "url": "https://www.youtube.com/watch?v=E8v2CKV7EXA" },
+        { "title": "Tone Your Arms Workout (No Equipment)", "channel": "MadFit", "url": "https://www.youtube.com/watch?v=AsPPDOsCH4A" }
+      ],
+      "20 mins": [
+        { "title": "Perfect Abs Workout (No Equipment!)", "channel": "Fraser Wilson", "url": "https://www.youtube.com/watch?v=Ela1sLsICFA" },
+        { "title": "Abs Workout At Home (No Equipment + No Repeat)", "channel": "Caroline Girvan", "url": "https://www.youtube.com/watch?v=3oeimlA6s68" },
+        { "title": "Flabby Arm Workout - How To Get Rid Of Flabby Arms", "channel": "FitnessType", "url": "https://www.youtube.com/watch?v=vN4tYPu4fqg" },
+        { "title": "Full Arm Workout No Equipment / Fat Burning Arm Workout", "channel": "Brian Syuki", "url": "https://www.youtube.com/watch?v=bQBrqiGBYeU" },
+        { "title": "Lower Body Workout No Equipment | Legs Workout At Home", "channel": "TIFF x DAN", "url": "https://www.youtube.com/watch?v=X0xt0fYTZv8" }
+      ],
+      "30 mins": [
+        { "title": "Full Body Calisthenics Workout At Home | Follow Along", "channel": "Tom Peto Training", "url": "https://www.youtube.com/watch?v=fWptOzJI3Wc" },
+        { "title": "Bodyweight Strength Workout (No Equipment)", "channel": "Juice & Toya", "url": "https://www.youtube.com/watch?v=A2WUdTsxMoA" },
+        { "title": "Full Body Workout For Total Beginners (All Standing, Low Impact, No Equipment)", "channel": "MadFit", "url": "https://www.youtube.com/watch?v=3rdsdh5fVeY" },
+        { "title": "Advanced Bodyweight Workout: Strength Workout", "channel": "Fit With Brit", "url": "https://www.youtube.com/watch?v=z7EUbbGC2sA" },
+        { "title": "Full Body Workout At Home (No Equipment)", "channel": "nourishmovelove", "url": "https://www.youtube.com/watch?v=2we2gPU7Zys" }
+      ]
+    },
+    "Yoga & Stretching": {
+      "10 mins": [
+        { "title": "Morning Yoga Full Body Stretch & Flow - Intermediate Yoga", "channel": "Yoga With Bird", "url": "https://www.youtube.com/watch?v=Mgg0K5kCSD4" },
+        { "title": "Yoga Full Body Stretch For Stiff Bodies", "channel": "Yoga With Bird", "url": "https://www.youtube.com/watch?v=SvPKFsCiMsw" },
+        { "title": "Yoga Stretch To Do Anytime You Need Relaxation!", "channel": "Yoga With Bird", "url": "https://www.youtube.com/watch?v=1qz7rZV0s-c" },
+        { "title": "Yoga For Beginners - Gentle, Safe & Easy Yoga Stretch", "channel": "Yoga with Kassandra", "url": "https://www.youtube.com/watch?v=5s978KzFvOg" },
+        { "title": "Yoga For Beginners | Start Yoga Here...", "channel": "Yoga With Adriene", "url": "https://www.youtube.com/watch?v=j7rKKpwdXNE" }
+      ],
+      "20 mins": [
+        { "title": "Full Body Yoga Flow For Strength & Mobility | All Levels", "channel": "Yoga With Tim", "url": "https://www.youtube.com/watch?v=qsqyZb_Sn8M" },
+        { "title": "Full Body Power Yoga Workout To Strengthen & Tone", "channel": "SarahBethYoga", "url": "https://www.youtube.com/watch?v=xVifQow87b4" },
+        { "title": "Full Body Flow | Yoga Practice", "channel": "Yoga With Adriene", "url": "https://www.youtube.com/watch?v=Nyg2w5xHJa0" },
+        { "title": "Feel Good Yoga | Yoga Flow To Stretch & Feel Good", "channel": "Move With Nicole", "url": "https://www.youtube.com/watch?v=0L_YrMcwU3w" },
+        { "title": "Beginner Yoga Routine | 30 Days Of Yoga For Beginners", "channel": "Charlie Follows", "url": "https://www.youtube.com/watch?v=poZBpvLTHNw" }
+      ],
+      "30 mins": [
+        { "title": "Full Body Yoga Flow | Energizing Yoga For Strength, Balance, & Flexibility", "channel": "YOGATX", "url": "https://www.youtube.com/watch?v=b1H3xO3x_Js" },
+        { "title": "Power And Balance | Yoga Practice", "channel": "Yoga With Adriene", "url": "https://www.youtube.com/watch?v=WltkvVB_lfM" },
+        { "title": "Beginner Yoga - Full Body Yoga Stretch No Props Needed", "channel": "Yoga with Kassandra", "url": "https://www.youtube.com/watch?v=6hZIzMpHl-c" },
+        { "title": "Energising Morning Yoga Flow | Full Body For Yoga All Levels", "channel": "Charlie Follows", "url": "https://www.youtube.com/watch?v=w98q46fhiO4" },
+        { "title": "Yoga Workout | Heart Opening Feel Good Flow", "channel": "Move With Nicole", "url": "https://www.youtube.com/watch?v=gKjgJ5k3i7c" }
+      ]
+    },
+    "Dance": {
+      "10 mins": [
+        { "title": "Dance Workout Taylor Swift | Full Body Dance Cardio", "channel": "Get Fit With Rick", "url": "https://www.youtube.com/watch?v=J1ruE9gDbhM" },
+        { "title": "Dance Workout - Cumbia, Salsa, Cha Cha", "channel": "375 Dance Studio", "url": "https://www.youtube.com/watch?v=pOzfjPrU_gY" },
+        { "title": "Quick Intense Cardio", "channel": "PS Fit", "url": "https://www.youtube.com/watch?v=yKOlo5wFzZc" },
+        { "title": "Brat Dance Workout (Charli XCX)", "channel": "MadFit", "url": "https://www.youtube.com/watch?v=P6KVlm2RxyE" },
+        { "title": "Tate McRae Dance Party Workout - Revolving Door, Sports Car & More!", "channel": "MadFit", "url": "https://www.youtube.com/watch?v=NnLSp0cRMqg" }
+      ],
+      "20 mins": [
+        { "title": "80's Dance Party Workout - Full Body/No Equipment", "channel": "MadFit", "url": "https://www.youtube.com/watch?v=OVys9s4Q4TY" },
+        { "title": "Sweaty Cardio Dance Workout | All Standing | High Intensity - All Levels", "channel": "Eleni Fit", "url": "https://www.youtube.com/watch?v=v3SGmJPDNVw" },
+        { "title": "Throwback Dance Workout | High Energy & High Vibes", "channel": "The Studio by Jamie Kinkeade", "url": "https://www.youtube.com/watch?v=fZ7Itq7mUwA" },
+        { "title": "Summer Dance Workout | Cardio Dance", "channel": "Tara's body", "url": "https://www.youtube.com/watch?v=Ad6CabYPDX0" }
+      ],
+      "30 mins": [
+        { "title": "80's Dance Party Workout | Workout To Music Of The 80's", "channel": "Improved Health", "url": "https://www.youtube.com/watch?v=RfLW9AJZhso" },
+        { "title": "Hip-Hop Fit Workout", "channel": "PS Fit", "url": "https://www.youtube.com/watch?v=ZWk19OVon2k" },
+        { "title": "Latin-Inspired Dance Cardio Workout With Luis Cervantes", "channel": "PS Fit", "url": "https://www.youtube.com/watch?v=QF_89LSM8AU" },
+        { "title": "K-Pop Dance Workout - No Squats, No Lunges - Fat-Burning Fun!", "channel": "BurpeeGirl", "url": "https://www.youtube.com/watch?v=tycIRw2X4-s" }
+      ]
+    },
+    "Pilates": {
+      "10 mins": [
+        { "title": "Pilates Core | Targeted Abs Workout At Home", "channel": "Targeted Abs Workout at Home", "url": "https://www.youtube.com/watch?v=sAaxTx84P6c" },
+        { "title": "Full Body Pilates Workout", "channel": "Jessica Valant", "url": "https://www.youtube.com/watch?v=qyhJtu0yWQA" },
+        { "title": "Mat Pilates Workout For A Strong Core", "channel": "BodyFit By Amy", "url": "https://www.youtube.com/watch?v=fMUp75J5f-c" },
+        { "title": "What If You Could Improve Your Posture In Just 10 Minutes A Day With Pilates?", "channel": "Sculpt It Tight", "url": "https://www.youtube.com/watch?v=FloL98PEiKw" },
+        { "title": "Mat Pilates Workout | Tone Abs, Thighs, Glutes, No Equipment", "channel": "Pilates Flow and Yoga with Sofia", "url": "https://www.youtube.com/watch?v=2jlvlsn7-5Y" }
+      ],
+      "20 mins": [
+        { "title": "Full Body Workout | Express Mat Pilates (No Equipment)", "channel": "Move With Nicole", "url": "https://www.youtube.com/watch?v=XoqDtdggZ3I" },
+        { "title": "Morning Pilates | Full Body Mat Pilates Workout (Moderate)", "channel": "Move With Nicole", "url": "https://www.youtube.com/watch?v=DAdjf01N310" },
+        { "title": "Advanced Pilates Workout With @Gochlopilates", "channel": "Well+Good", "url": "https://www.youtube.com/watch?v=pIUyRWO_THM" },
+        { "title": "Mat Pilates Core Workout That Works Your Abs For A Strong Core", "channel": "BodyFit By Amy", "url": "https://www.youtube.com/watch?v=ybWwKiszqbE" },
+        { "title": "Beginners Gentle Pilates Flow Mat Workout", "channel": "Flow with Mira", "url": "https://www.youtube.com/watch?v=PJLN1kAzbyw" }
+      ],
+      "30 mins": [
+        { "title": "Intense Mat Pilates | Full Body Workout (Cool Down Included)", "channel": "Move With Nicole", "url": "https://www.youtube.com/watch?v=_HnWLkHL1hU" },
+        { "title": "Morning Pilates | Full Body Mat Pilates Workout (Moderate)", "channel": "Move With Nicole", "url": "https://www.youtube.com/watch?v=C3LB3Qszx2I" },
+        { "title": "Pilates For Beginners | At-Home Mat Pilates (No Equipment)", "channel": "Move With Nicole", "url": "https://www.youtube.com/watch?v=cTsZweJPois" },
+        { "title": "Full Body Pilates Mat Workout | Pilates At Home (Intermediate)", "channel": "Trifecta Pilates", "url": "https://www.youtube.com/watch?v=4DwBxlm9IAQ" },
+        { "title": "Ultimate Pilates Toning Workout | Abs, Glutes, Back", "channel": "Lottie Murphy", "url": "https://www.youtube.com/watch?v=FQRoS0KsQBo" }
+      ]
+    }
+  }
+}

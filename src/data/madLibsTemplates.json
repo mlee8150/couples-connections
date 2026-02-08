@@ -1,0 +1,484 @@
+{
+  "templates": [
+    {
+      "id": 1,
+      "story": "The first time we {blank1}, I felt incredibly {blank2}. You were wearing {blank3} and had this {blank4} expression on your face. I remember thinking you looked like a {blank5}. When you finally {blank6}, my heart started to {blank7}. From that moment, I knew we would {blank8} together someday. Now every time I {blank9}, I think of that {blank10} day.",
+      "blanks": [
+        { "id": "blank1", "type": "activity", "prompt": "activity you did together" },
+        { "id": "blank2", "type": "emotion", "prompt": "emotion" },
+        { "id": "blank3", "type": "clothing", "prompt": "outfit or clothing item" },
+        { "id": "blank4", "type": "expression", "prompt": "facial expression" },
+        { "id": "blank5", "type": "noun", "prompt": "person, creature, or thing" },
+        { "id": "blank6", "type": "action", "prompt": "action (past tense)" },
+        { "id": "blank7", "type": "verb", "prompt": "physical reaction" },
+        { "id": "blank8", "type": "activity", "prompt": "relationship activity" },
+        { "id": "blank9", "type": "action", "prompt": "everyday action" },
+        { "id": "blank10", "type": "adjective", "prompt": "descriptive word" }
+      ]
+    },
+    {
+      "id": 2,
+      "story": "My favorite memory is when we went to {blank1} and you surprised me by {blank2}. The whole place smelled like {blank3} and there were {blank4} everywhere. You looked at me with those {blank5} eyes and said something about {blank6}. I couldn't stop {blank7} the entire time. We stayed until {blank8} and then {blank9} all the way home. I'll never forget how {blank10} that made me feel.",
+      "blanks": [
+        { "id": "blank1", "type": "place", "prompt": "location or destination" },
+        { "id": "blank2", "type": "action", "prompt": "unexpected action (-ing)" },
+        { "id": "blank3", "type": "scent", "prompt": "smell or scent" },
+        { "id": "blank4", "type": "noun", "prompt": "objects or things (plural)" },
+        { "id": "blank5", "type": "adjective", "prompt": "eye description" },
+        { "id": "blank6", "type": "topic", "prompt": "topic of conversation" },
+        { "id": "blank7", "type": "action", "prompt": "reaction (-ing)" },
+        { "id": "blank8", "type": "time", "prompt": "time of day or event" },
+        { "id": "blank9", "type": "action", "prompt": "movement action (past tense)" },
+        { "id": "blank10", "type": "emotion", "prompt": "feeling or emotion" }
+      ]
+    },
+    {
+      "id": 3,
+      "story": "If we could travel anywhere, I'd take you to {blank1} where we could {blank2} all day long. We'd eat {blank3} for breakfast and {blank4} for dinner. The locals would probably think we're {blank5} because of how we {blank6}. At night, we'd {blank7} under the {blank8} sky while talking about {blank9}. It would be the most {blank10} trip of our lives.",
+      "blanks": [
+        { "id": "blank1", "type": "place", "prompt": "dream destination" },
+        { "id": "blank2", "type": "activity", "prompt": "vacation activity" },
+        { "id": "blank3", "type": "food", "prompt": "breakfast food or dish" },
+        { "id": "blank4", "type": "food", "prompt": "dinner food or dish" },
+        { "id": "blank5", "type": "adjective", "prompt": "type of people" },
+        { "id": "blank6", "type": "behavior", "prompt": "behavior or habit" },
+        { "id": "blank7", "type": "activity", "prompt": "relaxing activity" },
+        { "id": "blank8", "type": "adjective", "prompt": "sky description" },
+        { "id": "blank9", "type": "topic", "prompt": "deep conversation topic" },
+        { "id": "blank10", "type": "adjective", "prompt": "positive adjective" }
+      ]
+    },
+    {
+      "id": 4,
+      "story": "You make me feel like a {blank1} whenever you call me {blank2}. My whole body turns {blank3} and I start to {blank4}. I love the way your {blank5} looks when you're being {blank6}. Sometimes I catch myself {blank7} just thinking about your {blank8}. People say we're {blank9}, but I think we're just deeply {blank10}.",
+      "blanks": [
+        { "id": "blank1", "type": "noun", "prompt": "person or creature" },
+        { "id": "blank2", "type": "petname", "prompt": "nickname or pet name" },
+        { "id": "blank3", "type": "color", "prompt": "color" },
+        { "id": "blank4", "type": "reaction", "prompt": "physical reaction" },
+        { "id": "blank5", "type": "feature", "prompt": "facial feature" },
+        { "id": "blank6", "type": "adjective", "prompt": "mood or demeanor" },
+        { "id": "blank7", "type": "action", "prompt": "daydreaming action (-ing)" },
+        { "id": "blank8", "type": "trait", "prompt": "personality trait or quality" },
+        { "id": "blank9", "type": "adjective", "prompt": "relationship description" },
+        { "id": "blank10", "type": "emotion", "prompt": "emotional state" }
+      ]
+    },
+    {
+      "id": 5,
+      "story": "Our perfect date would start with {blank1} in the morning, followed by a {blank2} brunch. We'd spend the afternoon {blank3} and maybe stop to {blank4} along the way. For dinner, we'd go somewhere {blank5} and order way too much {blank6}. The night would end with us {blank7} while listening to {blank8}. You'd give me that {blank9} look and I'd feel completely {blank10}.",
+      "blanks": [
+        { "id": "blank1", "type": "activity", "prompt": "morning activity" },
+        { "id": "blank2", "type": "adjective", "prompt": "meal description" },
+        { "id": "blank3", "type": "activity", "prompt": "afternoon activity (-ing)" },
+        { "id": "blank4", "type": "action", "prompt": "spontaneous action" },
+        { "id": "blank5", "type": "adjective", "prompt": "restaurant vibe" },
+        { "id": "blank6", "type": "food", "prompt": "type of food" },
+        { "id": "blank7", "type": "activity", "prompt": "romantic activity (-ing)" },
+        { "id": "blank8", "type": "noun", "prompt": "type of music or sounds" },
+        { "id": "blank9", "type": "adjective", "prompt": "eye expression" },
+        { "id": "blank10", "type": "emotion", "prompt": "emotional state" }
+      ]
+    },
+    {
+      "id": 6,
+      "story": "I knew you were the one when you {blank1} without me even asking. That was so {blank2} of you. Before that moment, I thought relationships were supposed to be {blank3}, but you showed me they could be {blank4}. You have this way of {blank5} that makes everyone around you feel {blank6}. Your {blank7} is honestly one of my favorite things about you. I hope we never stop {blank8} together, even when we're old and {blank9}. You're my {blank10} in every way.",
+      "blanks": [
+        { "id": "blank1", "type": "action", "prompt": "thoughtful action (past tense)" },
+        { "id": "blank2", "type": "adjective", "prompt": "character trait" },
+        { "id": "blank3", "type": "adjective", "prompt": "negative expectation" },
+        { "id": "blank4", "type": "adjective", "prompt": "positive reality" },
+        { "id": "blank5", "type": "behavior", "prompt": "way of being (-ing)" },
+        { "id": "blank6", "type": "emotion", "prompt": "feeling" },
+        { "id": "blank7", "type": "trait", "prompt": "quality or characteristic" },
+        { "id": "blank8", "type": "activity", "prompt": "shared activity (-ing)" },
+        { "id": "blank9", "type": "adjective", "prompt": "old age description" },
+        { "id": "blank10", "type": "noun", "prompt": "meaningful word for partner" }
+      ]
+    },
+    {
+      "id": 7,
+      "story": "If our love was a {blank1}, it would be the most {blank2} one ever created. Scientists would study how we {blank3} so perfectly. They'd write papers about our {blank4} and present them at {blank5} conferences. The headline would read: 'Couple Discovers Secret to {blank6}.' We'd be interviewed by {blank7} and become famous for our {blank8}. But honestly, I'd trade all that fame just to {blank9} with you one more {blank10} time.",
+      "blanks": [
+        { "id": "blank1", "type": "noun", "prompt": "object or concept" },
+        { "id": "blank2", "type": "adjective", "prompt": "impressive adjective" },
+        { "id": "blank3", "type": "verb", "prompt": "relationship verb" },
+        { "id": "blank4", "type": "noun", "prompt": "aspect of relationship" },
+        { "id": "blank5", "type": "adjective", "prompt": "type of event" },
+        { "id": "blank6", "type": "noun", "prompt": "relationship achievement" },
+        { "id": "blank7", "type": "noun", "prompt": "media or famous person" },
+        { "id": "blank8", "type": "trait", "prompt": "couple quality" },
+        { "id": "blank9", "type": "action", "prompt": "simple intimate action" },
+        { "id": "blank10", "type": "adjective", "prompt": "meaningful adjective" }
+      ]
+    },
+    {
+      "id": 8,
+      "story": "When we're apart, I miss your {blank1} and the way you {blank2} when you're {blank3}. I find myself reaching for my phone to send you {blank4} at {blank5} times. The distance makes me feel {blank6}, but then I remember how you {blank7} last time we were together. Your {blank8} still echoes in my mind. I'm counting down the {blank9} until I can {blank10} you again.",
+      "blanks": [
+        { "id": "blank1", "type": "feature", "prompt": "physical feature or presence" },
+        { "id": "blank2", "type": "action", "prompt": "habitual action" },
+        { "id": "blank3", "type": "state", "prompt": "mood or state of being" },
+        { "id": "blank4", "type": "noun", "prompt": "type of message or content" },
+        { "id": "blank5", "type": "adjective", "prompt": "time description" },
+        { "id": "blank6", "type": "emotion", "prompt": "lonely emotion" },
+        { "id": "blank7", "type": "action", "prompt": "memorable action (past tense)" },
+        { "id": "blank8", "type": "noun", "prompt": "sound or sensation" },
+        { "id": "blank9", "type": "noun", "prompt": "unit of time" },
+        { "id": "blank10", "type": "action", "prompt": "reunion action" }
+      ]
+    },
+    {
+      "id": 9,
+      "story": "Our song should be called '{blank1} in the {blank2}' and it would be about how we {blank3} against all odds. The first verse would describe your {blank4} and how it makes me {blank5}. The chorus would go: 'You're my {blank6}, my {blank7}, my everything.' The bridge would talk about that time we {blank8} until {blank9}. It would win a {blank10} award for sure.",
+      "blanks": [
+        { "id": "blank1", "type": "noun", "prompt": "romantic concept" },
+        { "id": "blank2", "type": "place", "prompt": "setting or location" },
+        { "id": "blank3", "type": "verb", "prompt": "love action (past tense)" },
+        { "id": "blank4", "type": "trait", "prompt": "quality or feature" },
+        { "id": "blank5", "type": "reaction", "prompt": "emotional reaction" },
+        { "id": "blank6", "type": "noun", "prompt": "term of endearment" },
+        { "id": "blank7", "type": "noun", "prompt": "another term of endearment" },
+        { "id": "blank8", "type": "activity", "prompt": "memorable activity (past tense)" },
+        { "id": "blank9", "type": "time", "prompt": "late time" },
+        { "id": "blank10", "type": "adjective", "prompt": "prestigious adjective" }
+      ]
+    },
+    {
+      "id": 10,
+      "story": "Remember when we tried to {blank1} and it turned into a complete {blank2}? You got {blank3} all over your {blank4} and I couldn't stop {blank5}. We tried to fix it by {blank6}, but that only made things more {blank7}. Eventually we just {blank8} and ordered {blank9} instead. That's when I realized I could {blank10} anything with you by my side.",
+      "blanks": [
+        { "id": "blank1", "type": "activity", "prompt": "activity you attempted" },
+        { "id": "blank2", "type": "noun", "prompt": "disaster or mess" },
+        { "id": "blank3", "type": "substance", "prompt": "substance or material" },
+        { "id": "blank4", "type": "bodypart", "prompt": "body part or clothing" },
+        { "id": "blank5", "type": "reaction", "prompt": "laughter or reaction (-ing)" },
+        { "id": "blank6", "type": "action", "prompt": "attempted solution (-ing)" },
+        { "id": "blank7", "type": "adjective", "prompt": "chaos description" },
+        { "id": "blank8", "type": "action", "prompt": "gave up action (past tense)" },
+        { "id": "blank9", "type": "food", "prompt": "takeout or delivery food" },
+        { "id": "blank10", "type": "verb", "prompt": "overcome or handle" }
+      ]
+    },
+    {
+      "id": 11,
+      "story": "You're my favorite {blank1} in the whole {blank2}. Nobody else can {blank3} the way you do, or make {blank4} seem so {blank5}. When I'm feeling {blank6}, you always know to {blank7}. You've taught me that love isn't about being {blank8}, it's about being {blank9} together. I promise to always {blank10} you, no matter what.",
+      "blanks": [
+        { "id": "blank1", "type": "noun", "prompt": "type of person" },
+        { "id": "blank2", "type": "place", "prompt": "large place (world, universe, etc.)" },
+        { "id": "blank3", "type": "action", "prompt": "unique action" },
+        { "id": "blank4", "type": "noun", "prompt": "ordinary thing" },
+        { "id": "blank5", "type": "adjective", "prompt": "special adjective" },
+        { "id": "blank6", "type": "emotion", "prompt": "vulnerable emotion" },
+        { "id": "blank7", "type": "action", "prompt": "comforting action" },
+        { "id": "blank8", "type": "adjective", "prompt": "relationship expectation" },
+        { "id": "blank9", "type": "adjective", "prompt": "authentic quality" },
+        { "id": "blank10", "type": "verb", "prompt": "commitment action" }
+      ]
+    },
+    {
+      "id": 12,
+      "story": "If I could give you anything, it would be a {blank1} made of {blank2} because you deserve something {blank3}. I'd also throw in a lifetime supply of {blank4} since you love those so much. We'd put everything in our dream house that has a {blank5} in the backyard and a {blank6} in every room. Our {blank7} would be the envy of the whole {blank8}. And every morning, I'd wake you up by {blank9} and telling you how {blank10} you are.",
+      "blanks": [
+        { "id": "blank1", "type": "noun", "prompt": "precious gift" },
+        { "id": "blank2", "type": "material", "prompt": "material or substance" },
+        { "id": "blank3", "type": "adjective", "prompt": "extraordinary adjective" },
+        { "id": "blank4", "type": "noun", "prompt": "their favorite thing" },
+        { "id": "blank5", "type": "noun", "prompt": "outdoor feature" },
+        { "id": "blank6", "type": "noun", "prompt": "luxury item" },
+        { "id": "blank7", "type": "noun", "prompt": "home or life" },
+        { "id": "blank8", "type": "place", "prompt": "area or region" },
+        { "id": "blank9", "type": "action", "prompt": "gentle wake-up action (-ing)" },
+        { "id": "blank10", "type": "adjective", "prompt": "compliment" }
+      ]
+    },
+    {
+      "id": 13,
+      "story": "Waking up next to you is like {blank1} every single morning. Your {blank2} face makes me feel so {blank3} inside. I love watching you {blank4} before you're fully awake, and the way your {blank5} gets all {blank6}. Sometimes I just {blank7} there wondering how I got so {blank8}. Then you open your eyes, {blank9} at me, and suddenly everything feels {blank10}.",
+      "blanks": [
+        { "id": "blank1", "type": "experience", "prompt": "wonderful experience (-ing)" },
+        { "id": "blank2", "type": "adjective", "prompt": "sleepy appearance" },
+        { "id": "blank3", "type": "emotion", "prompt": "warm feeling" },
+        { "id": "blank4", "type": "action", "prompt": "sleepy habit" },
+        { "id": "blank5", "type": "feature", "prompt": "physical feature" },
+        { "id": "blank6", "type": "adjective", "prompt": "messy or cute description" },
+        { "id": "blank7", "type": "action", "prompt": "quiet action" },
+        { "id": "blank8", "type": "adjective", "prompt": "fortunate feeling" },
+        { "id": "blank9", "type": "action", "prompt": "eye contact action" },
+        { "id": "blank10", "type": "adjective", "prompt": "completeness adjective" }
+      ]
+    },
+    {
+      "id": 14,
+      "story": "Our future home will have a {blank1} room just for {blank2} whenever we want. The kitchen will always smell like {blank3} because we'll cook {blank4} every weekend. We'll have a {blank5} where we keep all our {blank6} from our adventures. The walls will be covered in {blank7} that remind us of how far we've {blank8}. And there'll always be {blank9} playing softly in the background while we {blank10} on the couch.",
+      "blanks": [
+        { "id": "blank1", "type": "adjective", "prompt": "room description" },
+        { "id": "blank2", "type": "activity", "prompt": "favorite activity (-ing)" },
+        { "id": "blank3", "type": "scent", "prompt": "cooking smell" },
+        { "id": "blank4", "type": "food", "prompt": "homemade dish" },
+        { "id": "blank5", "type": "noun", "prompt": "storage space or display" },
+        { "id": "blank6", "type": "noun", "prompt": "keepsakes or mementos" },
+        { "id": "blank7", "type": "noun", "prompt": "wall decorations" },
+        { "id": "blank8", "type": "verb", "prompt": "progress verb (past tense)" },
+        { "id": "blank9", "type": "noun", "prompt": "type of music" },
+        { "id": "blank10", "type": "activity", "prompt": "relaxing activity" }
+      ]
+    },
+    {
+      "id": 15,
+      "story": "The way you {blank1} makes my {blank2} do a little {blank3} every time. I can't help but feel {blank4} when I see you {blank5}. You probably don't even realize that your {blank6} is my favorite {blank7}. I've memorized the way you {blank8} and the sound of your {blank9}. Being with you is like having a permanent case of {blank10}.",
+      "blanks": [
+        { "id": "blank1", "type": "action", "prompt": "simple action" },
+        { "id": "blank2", "type": "bodypart", "prompt": "internal body part (heart, stomach)" },
+        { "id": "blank3", "type": "movement", "prompt": "movement or flip" },
+        { "id": "blank4", "type": "emotion", "prompt": "giddy emotion" },
+        { "id": "blank5", "type": "action", "prompt": "mundane action" },
+        { "id": "blank6", "type": "feature", "prompt": "physical feature or habit" },
+        { "id": "blank7", "type": "noun", "prompt": "thing to notice" },
+        { "id": "blank8", "type": "action", "prompt": "characteristic action" },
+        { "id": "blank9", "type": "sound", "prompt": "sound they make" },
+        { "id": "blank10", "type": "noun", "prompt": "lovesick condition" }
+      ]
+    },
+    {
+      "id": 16,
+      "story": "Let's run away to {blank1} and start a new life where nobody knows us. We'll open a little {blank2} shop and call it '{blank3}'. Every morning we'll {blank4} before the sun comes up, and every evening we'll {blank5} until the stars appear. The locals will call us 'the {blank6} couple' because of how we always {blank7}. We'll grow old there, surrounded by {blank8}, still {blank9} each other like it's the {blank10} day.",
+      "blanks": [
+        { "id": "blank1", "type": "place", "prompt": "faraway destination" },
+        { "id": "blank2", "type": "noun", "prompt": "product or service" },
+        { "id": "blank3", "type": "name", "prompt": "creative business name" },
+        { "id": "blank4", "type": "activity", "prompt": "morning routine" },
+        { "id": "blank5", "type": "activity", "prompt": "evening ritual" },
+        { "id": "blank6", "type": "adjective", "prompt": "couple description" },
+        { "id": "blank7", "type": "behavior", "prompt": "affectionate behavior" },
+        { "id": "blank8", "type": "noun", "prompt": "beautiful surroundings" },
+        { "id": "blank9", "type": "action", "prompt": "loving action (-ing)" },
+        { "id": "blank10", "type": "ordinal", "prompt": "first, last, or special" }
+      ]
+    },
+    {
+      "id": 17,
+      "story": "When you're {blank1}, I want to wrap you in a {blank2} and tell you everything will be {blank3}. I'll make you {blank4} and we'll spend hours just {blank5}. You don't have to be {blank6} around me - I've seen your {blank7} side and I love you even more for it. Together we can {blank8} any challenge because our love is more {blank9} than anything. You are my {blank10} and I'll always protect that.",
+      "blanks": [
+        { "id": "blank1", "type": "emotion", "prompt": "vulnerable state" },
+        { "id": "blank2", "type": "noun", "prompt": "comforting item" },
+        { "id": "blank3", "type": "adjective", "prompt": "reassuring word" },
+        { "id": "blank4", "type": "noun", "prompt": "comfort food or drink" },
+        { "id": "blank5", "type": "activity", "prompt": "quiet activity (-ing)" },
+        { "id": "blank6", "type": "adjective", "prompt": "put-together appearance" },
+        { "id": "blank7", "type": "adjective", "prompt": "imperfect or real" },
+        { "id": "blank8", "type": "verb", "prompt": "overcome" },
+        { "id": "blank9", "type": "adjective", "prompt": "strong adjective" },
+        { "id": "blank10", "type": "noun", "prompt": "precious thing" }
+      ]
+    },
+    {
+      "id": 18,
+      "story": "You had me at '{blank1}.' From that moment, I knew you were {blank2} special. The way you {blank3} when you talk about {blank4} is absolutely {blank5}. I love how you always {blank6} even when things get {blank7}. You've changed my whole perspective on {blank8}. Before you, I never thought I could feel this {blank9}. Now I can't imagine a single {blank10} without you.",
+      "blanks": [
+        { "id": "blank1", "type": "phrase", "prompt": "memorable quote or word" },
+        { "id": "blank2", "type": "adverb", "prompt": "intensity word" },
+        { "id": "blank3", "type": "reaction", "prompt": "animated reaction" },
+        { "id": "blank4", "type": "topic", "prompt": "passion or interest" },
+        { "id": "blank5", "type": "adjective", "prompt": "endearing adjective" },
+        { "id": "blank6", "type": "behavior", "prompt": "positive habit" },
+        { "id": "blank7", "type": "adjective", "prompt": "challenging situation" },
+        { "id": "blank8", "type": "noun", "prompt": "life concept" },
+        { "id": "blank9", "type": "emotion", "prompt": "deep emotion" },
+        { "id": "blank10", "type": "noun", "prompt": "unit of time" }
+      ]
+    },
+    {
+      "id": 19,
+      "story": "On our anniversary, let's {blank1} until we can't anymore. Then we'll {blank2} somewhere {blank3} and reminisce about how we first {blank4}. I'll give you a {blank5} that I've been hiding, and you'll probably {blank6} because you always do. We'll make a toast to {blank7} more years of {blank8}. By the end of the night, we'll be too {blank9} to do anything but {blank10} in each other's arms.",
+      "blanks": [
+        { "id": "blank1", "type": "activity", "prompt": "celebration activity" },
+        { "id": "blank2", "type": "action", "prompt": "settling down action" },
+        { "id": "blank3", "type": "adjective", "prompt": "romantic setting" },
+        { "id": "blank4", "type": "action", "prompt": "how you met (past tense)" },
+        { "id": "blank5", "type": "noun", "prompt": "surprise gift" },
+        { "id": "blank6", "type": "reaction", "prompt": "emotional reaction" },
+        { "id": "blank7", "type": "number", "prompt": "number of years" },
+        { "id": "blank8", "type": "noun", "prompt": "relationship quality" },
+        { "id": "blank9", "type": "adjective", "prompt": "content exhaustion" },
+        { "id": "blank10", "type": "action", "prompt": "intimate action" }
+      ]
+    },
+    {
+      "id": 20,
+      "story": "If you were a {blank1}, you'd be the {blank2} kind because you always {blank3}. Your presence fills any room with {blank4} energy. People are drawn to your {blank5} nature and the way you {blank6}. I've seen you turn a {blank7} situation into something {blank8} just by being yourself. That's your superpower - making everything feel {blank9}. I'm so {blank10} to be the one who gets to witness it every day.",
+      "blanks": [
+        { "id": "blank1", "type": "noun", "prompt": "food, animal, or thing" },
+        { "id": "blank2", "type": "adjective", "prompt": "best type" },
+        { "id": "blank3", "type": "behavior", "prompt": "characteristic behavior" },
+        { "id": "blank4", "type": "adjective", "prompt": "atmosphere type" },
+        { "id": "blank5", "type": "adjective", "prompt": "personality description" },
+        { "id": "blank6", "type": "action", "prompt": "social action" },
+        { "id": "blank7", "type": "adjective", "prompt": "difficult situation" },
+        { "id": "blank8", "type": "adjective", "prompt": "positive outcome" },
+        { "id": "blank9", "type": "adjective", "prompt": "comforting adjective" },
+        { "id": "blank10", "type": "emotion", "prompt": "grateful emotion" }
+      ]
+    },
+    {
+      "id": 21,
+      "story": "The {blank1} of your {blank2} is my favorite sound in the world. It makes everything feel {blank3} and reminds me why I {blank4} you so much. I could listen to you {blank5} for hours, even when you're just talking about {blank6}. Your voice has this {blank7} quality that makes me feel {blank8}. Sometimes I {blank9} just to hear you {blank10} again.",
+      "blanks": [
+        { "id": "blank1", "type": "sound", "prompt": "sound type (laugh, voice, etc.)" },
+        { "id": "blank2", "type": "noun", "prompt": "what makes the sound" },
+        { "id": "blank3", "type": "adjective", "prompt": "peaceful adjective" },
+        { "id": "blank4", "type": "verb", "prompt": "love verb" },
+        { "id": "blank5", "type": "action", "prompt": "speaking action" },
+        { "id": "blank6", "type": "topic", "prompt": "mundane topic" },
+        { "id": "blank7", "type": "adjective", "prompt": "voice quality" },
+        { "id": "blank8", "type": "emotion", "prompt": "safe emotion" },
+        { "id": "blank9", "type": "action", "prompt": "playful action" },
+        { "id": "blank10", "type": "reaction", "prompt": "vocal reaction" }
+      ]
+    },
+    {
+      "id": 22,
+      "story": "I promise to always {blank1} with you, even when we're old and our {blank2} don't work like they used to. We'll be those {blank3} people at the {blank4} who still {blank5} in public. Our grandchildren will think we're {blank6}, but we'll just {blank7} at each other knowingly. I want {blank8} more years of your {blank9} and your {blank10}. You're stuck with me forever.",
+      "blanks": [
+        { "id": "blank1", "type": "activity", "prompt": "romantic activity" },
+        { "id": "blank2", "type": "bodypart", "prompt": "body parts (plural)" },
+        { "id": "blank3", "type": "adjective", "prompt": "elderly couple description" },
+        { "id": "blank4", "type": "place", "prompt": "public place" },
+        { "id": "blank5", "type": "action", "prompt": "affectionate action" },
+        { "id": "blank6", "type": "adjective", "prompt": "embarrassing or cute" },
+        { "id": "blank7", "type": "action", "prompt": "knowing gesture" },
+        { "id": "blank8", "type": "number", "prompt": "large number" },
+        { "id": "blank9", "type": "trait", "prompt": "their quality" },
+        { "id": "blank10", "type": "trait", "prompt": "another quality" }
+      ]
+    },
+    {
+      "id": 23,
+      "story": "Your {blank1} are like two {blank2} that hold all the {blank3} of the universe. When you look at me with them, I feel completely {blank4}. I've seen them {blank5} with joy, {blank6} with tears, and {blank7} with determination. Every expression tells me something {blank8} about what you're feeling. I hope I never stop being able to {blank9} your {blank10} through those eyes.",
+      "blanks": [
+        { "id": "blank1", "type": "feature", "prompt": "eyes or facial feature" },
+        { "id": "blank2", "type": "noun", "prompt": "beautiful objects" },
+        { "id": "blank3", "type": "noun", "prompt": "mysteries or wonders" },
+        { "id": "blank4", "type": "emotion", "prompt": "seen or understood" },
+        { "id": "blank5", "type": "action", "prompt": "happy expression" },
+        { "id": "blank6", "type": "action", "prompt": "sad expression" },
+        { "id": "blank7", "type": "action", "prompt": "intense expression" },
+        { "id": "blank8", "type": "adjective", "prompt": "meaningful adjective" },
+        { "id": "blank9", "type": "verb", "prompt": "read or understand" },
+        { "id": "blank10", "type": "noun", "prompt": "inner self or soul" }
+      ]
+    },
+    {
+      "id": 24,
+      "story": "I'd share my last {blank1} with you, but never my {blank2} - that's where I draw the line. Just kidding, you can have anything of mine because seeing you {blank3} makes me {blank4}. You've taught me that love is about {blank5} the small things, like {blank6} together or {blank7} on lazy Sundays. I didn't know I needed someone to {blank8} with until you came along. Now I can't {blank9} without telling you about it. You're my {blank10}.",
+      "blanks": [
+        { "id": "blank1", "type": "food", "prompt": "shareable food" },
+        { "id": "blank2", "type": "food", "prompt": "precious food" },
+        { "id": "blank3", "type": "reaction", "prompt": "happy reaction" },
+        { "id": "blank4", "type": "emotion", "prompt": "joyful emotion" },
+        { "id": "blank5", "type": "action", "prompt": "appreciating (-ing)" },
+        { "id": "blank6", "type": "activity", "prompt": "daily activity (-ing)" },
+        { "id": "blank7", "type": "activity", "prompt": "lazy activity (-ing)" },
+        { "id": "blank8", "type": "activity", "prompt": "sharing activity" },
+        { "id": "blank9", "type": "action", "prompt": "experience something" },
+        { "id": "blank10", "type": "noun", "prompt": "partner word" }
+      ]
+    },
+    {
+      "id": 25,
+      "story": "Let's slow dance in the {blank1} while {blank2} music plays softly. I'll hold you {blank3} and whisper {blank4} things in your ear. You'll probably {blank5} and call me {blank6}, but secretly you'll love it. We'll sway until our {blank7} get tired, then collapse onto the {blank8} together. These are the {blank9} I live for - just you, me, and absolutely {blank10} else in the world.",
+      "blanks": [
+        { "id": "blank1", "type": "place", "prompt": "room or location" },
+        { "id": "blank2", "type": "adjective", "prompt": "music genre or mood" },
+        { "id": "blank3", "type": "adverb", "prompt": "how you hold them" },
+        { "id": "blank4", "type": "adjective", "prompt": "romantic or silly" },
+        { "id": "blank5", "type": "reaction", "prompt": "flustered reaction" },
+        { "id": "blank6", "type": "adjective", "prompt": "playful insult" },
+        { "id": "blank7", "type": "bodypart", "prompt": "body parts" },
+        { "id": "blank8", "type": "furniture", "prompt": "soft furniture" },
+        { "id": "blank9", "type": "noun", "prompt": "moments or memories" },
+        { "id": "blank10", "type": "noun", "prompt": "nothing or no one" }
+      ]
+    },
+    {
+      "id": 26,
+      "story": "The {blank1} time you {blank2}, I knew this was {blank3}. Everything before that moment felt like {blank4}, but suddenly life became {blank5}. You have this way of making {blank6} feel like {blank7}. Even our most {blank8} moments are filled with {blank9}. I never believed in {blank10} until I met you, but now I'm a complete convert.",
+      "blanks": [
+        { "id": "blank1", "type": "ordinal", "prompt": "first, second, hundredth" },
+        { "id": "blank2", "type": "action", "prompt": "significant action (past tense)" },
+        { "id": "blank3", "type": "adjective", "prompt": "real, fate, destiny" },
+        { "id": "blank4", "type": "noun", "prompt": "before state" },
+        { "id": "blank5", "type": "adjective", "prompt": "vibrant adjective" },
+        { "id": "blank6", "type": "noun", "prompt": "ordinary things" },
+        { "id": "blank7", "type": "noun", "prompt": "magical things" },
+        { "id": "blank8", "type": "adjective", "prompt": "mundane adjective" },
+        { "id": "blank9", "type": "noun", "prompt": "positive element" },
+        { "id": "blank10", "type": "noun", "prompt": "romantic concept" }
+      ]
+    },
+    {
+      "id": 27,
+      "story": "You complete me like {blank1} completes {blank2}. We're {blank3} perfect in our own {blank4} way. Sure, you {blank5} when you're nervous and I {blank6} when I'm tired, but those quirks make us {blank7}. I wouldn't trade our {blank8} for anything more {blank9}. Normal is overrated anyway. Give me {blank10} with you any day.",
+      "blanks": [
+        { "id": "blank1", "type": "noun", "prompt": "one half of a pair" },
+        { "id": "blank2", "type": "noun", "prompt": "the other half" },
+        { "id": "blank3", "type": "adverb", "prompt": "imperfectly, weirdly, etc." },
+        { "id": "blank4", "type": "adjective", "prompt": "unique adjective" },
+        { "id": "blank5", "type": "action", "prompt": "nervous habit" },
+        { "id": "blank6", "type": "action", "prompt": "tired habit" },
+        { "id": "blank7", "type": "pronoun", "prompt": "us or who we are" },
+        { "id": "blank8", "type": "adjective", "prompt": "type of love" },
+        { "id": "blank9", "type": "adjective", "prompt": "conventional adjective" },
+        { "id": "blank10", "type": "noun", "prompt": "beautiful chaos" }
+      ]
+    },
+    {
+      "id": 28,
+      "story": "I wrote you a poem: 'Roses are {blank1}, violets are {blank2}, you're absolutely {blank3}, and I {blank4} you too. Your {blank5} makes me {blank6}, your {blank7} makes me {blank8}. I'd cross the {blank9} just to see your {blank10}.' I know it's not Shakespeare, but it's from my heart.",
+      "blanks": [
+        { "id": "blank1", "type": "adjective", "prompt": "not red" },
+        { "id": "blank2", "type": "adjective", "prompt": "not blue" },
+        { "id": "blank3", "type": "adjective", "prompt": "lovely adjective" },
+        { "id": "blank4", "type": "verb", "prompt": "adore, love, etc." },
+        { "id": "blank5", "type": "feature", "prompt": "physical or personality feature" },
+        { "id": "blank6", "type": "emotion", "prompt": "positive emotion" },
+        { "id": "blank7", "type": "feature", "prompt": "another feature" },
+        { "id": "blank8", "type": "emotion", "prompt": "another emotion" },
+        { "id": "blank9", "type": "noun", "prompt": "vast distance" },
+        { "id": "blank10", "type": "feature", "prompt": "beloved feature" }
+      ]
+    },
+    {
+      "id": 29,
+      "story": "The recipe for us is simple: combine {blank1} cup of {blank2} with generous amounts of {blank3}. Sprinkle in some {blank4} and a dash of {blank5}. Mix together with {blank6} until {blank7}. Let it simmer through all the {blank8} times. Serve with {blank9} and garnish with {blank10}. Best enjoyed every single day.",
+      "blanks": [
+        { "id": "blank1", "type": "number", "prompt": "amount" },
+        { "id": "blank2", "type": "noun", "prompt": "relationship ingredient" },
+        { "id": "blank3", "type": "noun", "prompt": "emotional ingredient" },
+        { "id": "blank4", "type": "noun", "prompt": "fun element" },
+        { "id": "blank5", "type": "noun", "prompt": "spicy element" },
+        { "id": "blank6", "type": "noun", "prompt": "bonding activity" },
+        { "id": "blank7", "type": "adjective", "prompt": "well-blended" },
+        { "id": "blank8", "type": "adjective", "prompt": "good and bad" },
+        { "id": "blank9", "type": "noun", "prompt": "side of love" },
+        { "id": "blank10", "type": "noun", "prompt": "sweet topping" }
+      ]
+    },
+    {
+      "id": 30,
+      "story": "When I see you after a long day, my whole {blank1} literally {blank2}. The stress just {blank3} away and I remember what actually {blank4}. You could be wearing {blank5} and covered in {blank6} and I'd still think you're the most {blank7} person alive. Coming home to you is like {blank8} after being {blank9} for too long. You're my {blank10} in human form.",
+      "blanks": [
+        { "id": "blank1", "type": "noun", "prompt": "body, being, or self" },
+        { "id": "blank2", "type": "reaction", "prompt": "positive physical reaction" },
+        { "id": "blank3", "type": "action", "prompt": "disappears how" },
+        { "id": "blank4", "type": "verb", "prompt": "matters" },
+        { "id": "blank5", "type": "clothing", "prompt": "unflattering clothes" },
+        { "id": "blank6", "type": "substance", "prompt": "messy substance" },
+        { "id": "blank7", "type": "adjective", "prompt": "attractive adjective" },
+        { "id": "blank8", "type": "experience", "prompt": "relief experience (-ing)" },
+        { "id": "blank9", "type": "adjective", "prompt": "deprived state" },
+        { "id": "blank10", "type": "noun", "prompt": "comfort concept" }
+      ]
+    }
+  ]
+}
