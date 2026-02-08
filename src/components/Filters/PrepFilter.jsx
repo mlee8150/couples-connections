@@ -5,17 +5,19 @@ function PrepFilter({ value, onChange }) {
 
   return (
     <div className="flex flex-col gap-2">
-      <label className="text-sm font-medium text-gray-700">Prep Time</label>
+      <label className="text-sm font-medium" style={{ color: '#ff91af' }}>Prep Time</label>
       <div className="flex gap-2">
         {levels.map((level) => (
           <button
             key={level}
             onClick={() => onChange(value === level ? null : level)}
-            className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-              value === level
-                ? 'bg-pink-500 text-white shadow-md'
-                : 'bg-white text-gray-600 border border-pink-200 hover:border-pink-400'
-            }`}
+            className="flex-1 px-3 py-2 rounded-xl text-sm font-medium transition-all duration-200"
+            style={{
+              backgroundColor: value === level ? '#ff91af' : '#FBFAF2',
+              color: value === level ? 'white' : '#666',
+              border: value === level ? '2px solid #ff91af' : '2px solid #fbcce7',
+              boxShadow: value === level ? '0 4px 6px -1px rgba(255, 145, 175, 0.3)' : 'none'
+            }}
           >
             <div className="flex flex-col items-center">
               <span>{prepLabels[level].label}</span>

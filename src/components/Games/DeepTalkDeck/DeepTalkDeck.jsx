@@ -94,6 +94,7 @@ function DeepTalkDeck() {
         cards: selectedCards,
         currentIndex: 0,
         totalCards: selectedCards.length,
+        phase: 'playing',
       });
     }
 
@@ -118,6 +119,22 @@ function DeepTalkDeck() {
     }
   }, [roomStatus, gamePhase]);
 
+  // Check if game phase changed (play again sync or start sync)
+  useEffect(() => {
+    if (gameState?.phase === 'setup' && gamePhase === 'complete') {
+      // Host triggered play again - sync non-host back to setup
+      setGamePhase('setup');
+      setCurrentCardIndex(0);
+      setGameCards([]);
+    }
+    if (gameState?.phase === 'playing' && gamePhase === 'setup' && gameState?.cards?.length > 0) {
+      // Host started the deck - sync non-host to playing
+      setGameCards(gameState.cards);
+      setCurrentCardIndex(0);
+      setGamePhase('playing');
+    }
+  }, [gameState?.phase, gameState?.cards, gamePhase]);
+
   const handleNextCard = async () => {
     const nextIndex = currentCardIndex + 1;
 
@@ -139,10 +156,20 @@ function DeepTalkDeck() {
     }, 300);
   };
 
-  const handlePlayAgain = () => {
+  const handlePlayAgain = async () => {
+    // Reset local state
     setGamePhase('setup');
     setCurrentCardIndex(0);
     setGameCards([]);
+
+    // Update Firebase so both players sync
+    if (isHost) {
+      await updateGameState({
+        currentIndex: 0,
+        cards: [],
+        phase: 'setup',
+      });
+    }
   };
 
   const getCategoryInfo = (categoryId) => {
@@ -152,7 +179,7 @@ function DeepTalkDeck() {
   // Lobby phase
   if (gamePhase === 'lobby') {
     return (
-      <div className="min-h-screen bg-pink-50 py-8">
+      <div className="min-h-screen py-8" style={{ backgroundColor: '#FBFAF2' }}>
         <RoomLobby
           gameId="deep-talk-deck"
           gameName="Deep Talk Deck"
@@ -165,17 +192,17 @@ function DeepTalkDeck() {
   // Setup phase
   if (gamePhase === 'setup') {
     return (
-      <div className="min-h-screen bg-pink-50 py-8 px-4">
+      <div className="min-h-screen py-8 px-4" style={{ backgroundColor: '#FBFAF2' }}>
         <div className="max-w-md mx-auto">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-2 font-heading">
+          <h2 className="text-3xl font-bold text-center mb-2 font-heading" style={{ color: '#ff91af' }}>
             Deep Talk Deck
           </h2>
-          <p className="text-gray-600 text-center mb-8">
+          <p className="text-center mb-8" style={{ color: '#ff91af' }}>
             Choose your categories and how many cards to draw
           </p>
 
           {/* Category Selection */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
+          <div className="rounded-2xl shadow-lg p-6 mb-6" style={{ backgroundColor: '#ffecf2', border: '1px solid #fbcce7' }}>
             <h3 className="text-lg font-semibold text-gray-800 mb-4">Select Categories</h3>
             <div className="grid grid-cols-2 gap-3">
               {CATEGORIES.map((category) => (
@@ -185,30 +212,32 @@ function DeepTalkDeck() {
                   className={`p-4 rounded-xl border-2 transition-all duration-200 ${
                     selectedCategories.includes(category.id)
                       ? `${category.color} shadow-md`
-                      : 'bg-gray-50 border-gray-200 hover:border-gray-300'
+                      : 'border-gray-200 hover:border-gray-300'
                   }`}
+                  style={{ backgroundColor: selectedCategories.includes(category.id) ? undefined : '#FBFAF2' }}
                 >
                   <span className="text-2xl block mb-1">{category.emoji}</span>
                   <span className="font-medium text-gray-800">{category.name}</span>
                 </button>
               ))}
             </div>
-            <p className="text-xs text-gray-500 mt-3">Select at least one category</p>
+            <p className="text-xs mt-3" style={{ color: '#ff91af' }}>Select at least one category</p>
           </div>
 
           {/* Card Count Selection */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
+          <div className="rounded-2xl shadow-lg p-6 mb-6" style={{ backgroundColor: '#ffecf2', border: '1px solid #fbcce7' }}>
             <h3 className="text-lg font-semibold text-gray-800 mb-4">Number of Cards</h3>
             <div className="grid grid-cols-3 gap-2">
               {CARD_OPTIONS.map((count) => (
                 <button
                   key={count}
                   onClick={() => setTotalCards(count)}
-                  className={`py-3 rounded-xl font-medium transition-all duration-200 ${
-                    totalCards === count
-                      ? 'bg-pink-500 text-white shadow-md'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
+                  className="py-3 rounded-xl font-medium transition-all duration-200"
+                  style={{
+                    backgroundColor: totalCards === count ? '#ff91af' : '#FBFAF2',
+                    color: totalCards === count ? 'white' : '#666',
+                    boxShadow: totalCards === count ? '0 4px 6px -1px rgba(0, 0, 0, 0.1)' : 'none'
+                  }}
                 >
                   {count}
                 </button>
@@ -228,13 +257,13 @@ function DeepTalkDeck() {
   // Complete phase
   if (gamePhase === 'complete') {
     return (
-      <div className="min-h-screen bg-pink-50 py-8 px-4 flex items-center justify-center">
+      <div className="min-h-screen py-8 px-4 flex items-center justify-center" style={{ backgroundColor: '#FBFAF2' }}>
         <div className="max-w-md mx-auto text-center">
           <div className="text-6xl mb-6">💕</div>
-          <h2 className="text-3xl font-bold text-gray-800 mb-4 font-heading">
+          <h2 className="text-3xl font-bold mb-4 font-heading" style={{ color: '#ff91af' }}>
             Beautiful Conversation!
           </h2>
-          <p className="text-gray-600 mb-8">
+          <p className="mb-8" style={{ color: '#ff91af' }}>
             You explored {gameCards.length} topics together. Keep the conversation going!
           </p>
 
@@ -256,10 +285,10 @@ function DeepTalkDeck() {
 
   if (!currentCard) {
     return (
-      <div className="min-h-screen bg-pink-50 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#FBFAF2' }}>
         <div className="text-center">
-          <div className="animate-spin w-12 h-12 border-4 border-pink-500 border-t-transparent rounded-full mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading cards...</p>
+          <div className="animate-spin w-12 h-12 border-4 border-t-transparent rounded-full mx-auto mb-4" style={{ borderColor: '#ff91af', borderTopColor: 'transparent' }}></div>
+          <p style={{ color: '#ff91af' }}>Loading cards...</p>
         </div>
       </div>
     );
@@ -268,7 +297,7 @@ function DeepTalkDeck() {
   const categoryInfo = getCategoryInfo(currentCard.category);
 
   return (
-    <div className="min-h-screen bg-pink-50 py-8 px-4">
+    <div className="min-h-screen py-8 px-4" style={{ backgroundColor: '#FBFAF2' }}>
       <div className="max-w-md mx-auto">
         {/* Progress */}
         <div className="mb-8">
@@ -277,9 +306,10 @@ function DeepTalkDeck() {
 
         {/* Card */}
         <div
-          className={`bg-white rounded-2xl shadow-lg overflow-hidden mb-6 transition-all duration-300 ${
+          className={`rounded-2xl shadow-lg overflow-hidden mb-6 transition-all duration-300 ${
             isFlipping ? 'opacity-0 scale-95' : 'opacity-100 scale-100 animate-slide-up'
           }`}
+          style={{ backgroundColor: '#ffecf2', border: '1px solid #fbcce7' }}
         >
           {/* Category Header */}
           <div className={`px-6 py-3 ${categoryInfo.color} border-b-2`}>
@@ -303,7 +333,7 @@ function DeepTalkDeck() {
         </Button>
 
         {/* Card count indicator */}
-        <p className="text-center text-gray-500 mt-4 text-sm">
+        <p className="text-center mt-4 text-sm" style={{ color: '#ff91af' }}>
           Card {currentCardIndex + 1} of {gameCards.length}
         </p>
       </div>

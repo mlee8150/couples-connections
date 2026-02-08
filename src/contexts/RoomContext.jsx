@@ -52,11 +52,12 @@ export function RoomProvider({ children }) {
   }, []);
 
   // Create a new room
-  const createRoom = useCallback(async (gameId) => {
+  const createRoom = useCallback(async (gameId, name) => {
     try {
       setError(null);
       const code = generateRoomCode();
       const roomRef = ref(database, `rooms/${code}`);
+      const finalName = name || playerName || 'Player 1';
 
       await set(roomRef, {
         gameId,
@@ -65,7 +66,7 @@ export function RoomProvider({ children }) {
         status: 'waiting', // waiting, playing, finished
         players: {
           [playerId]: {
-            name: playerName || 'Player 1',
+            name: finalName,
             joinedAt: serverTimestamp(),
             isHost: true,
           }
@@ -84,11 +85,12 @@ export function RoomProvider({ children }) {
   }, [playerId, playerName]);
 
   // Join an existing room
-  const joinRoom = useCallback(async (code) => {
+  const joinRoom = useCallback(async (code, name) => {
     try {
       setError(null);
       const upperCode = code.toUpperCase();
       const roomRef = ref(database, `rooms/${upperCode}`);
+      const finalName = name || playerName || 'Player 2';
 
       // First check if room exists
       return new Promise((resolve, reject) => {
@@ -112,7 +114,7 @@ export function RoomProvider({ children }) {
           // Add player to room
           const playerRef = ref(database, `rooms/${upperCode}/players/${playerId}`);
           await set(playerRef, {
-            name: playerName || 'Player 2',
+            name: finalName,
             joinedAt: serverTimestamp(),
             isHost: false,
           });

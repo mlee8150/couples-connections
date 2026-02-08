@@ -30,8 +30,9 @@ function RoomLobby({ gameId, gameName, onGameStart }) {
       alert('Please enter your name first!');
       return;
     }
-    updatePlayerName(localName.trim());
-    await createRoom(gameId);
+    const trimmedName = localName.trim();
+    updatePlayerName(trimmedName);
+    await createRoom(gameId, trimmedName);
   };
 
   const handleJoinRoom = async () => {
@@ -43,10 +44,11 @@ function RoomLobby({ gameId, gameName, onGameStart }) {
       alert('Please enter a room code!');
       return;
     }
-    updatePlayerName(localName.trim());
+    const trimmedName = localName.trim();
+    updatePlayerName(trimmedName);
     setIsJoining(true);
     try {
-      await joinRoom(joinCode.trim());
+      await joinRoom(joinCode.trim(), trimmedName);
     } catch (err) {
       // Error is handled in context
     } finally {
@@ -76,13 +78,13 @@ function RoomLobby({ gameId, gameName, onGameStart }) {
   if (!isConnected) {
     return (
       <div className="max-w-md mx-auto p-6">
-        <h2 className="text-2xl font-bold text-gray-800 text-center mb-6 font-heading">
+        <h2 className="text-2xl font-bold text-center mb-6 font-heading" style={{ color: '#ff91af' }}>
           {gameName}
         </h2>
 
         {/* Name Input */}
         <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium mb-2" style={{ color: '#ff91af' }}>
             Your Name
           </label>
           <input
@@ -90,13 +92,14 @@ function RoomLobby({ gameId, gameName, onGameStart }) {
             value={localName}
             onChange={(e) => setLocalName(e.target.value)}
             placeholder="Enter your name"
-            className="w-full px-4 py-3 rounded-xl border border-pink-200 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 outline-none transition-all"
+            className="w-full px-4 py-3 rounded-2xl outline-none transition-all"
+            style={{ backgroundColor: '#ffecf2', border: '2px solid #fbcce7' }}
             maxLength={20}
           />
         </div>
 
         {error && (
-          <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-xl text-sm">
+          <div className="mb-4 p-3 bg-red-50 text-red-600 rounded-2xl text-sm border border-red-200">
             {error}
           </div>
         )}
@@ -123,7 +126,7 @@ function RoomLobby({ gameId, gameName, onGameStart }) {
         ) : (
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium mb-2" style={{ color: '#ff91af' }}>
                 Room Code
               </label>
               <input
@@ -131,7 +134,8 @@ function RoomLobby({ gameId, gameName, onGameStart }) {
                 value={joinCode}
                 onChange={(e) => setJoinCode(e.target.value.toUpperCase())}
                 placeholder="Enter 6-digit code"
-                className="w-full px-4 py-3 rounded-xl border border-pink-200 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 outline-none transition-all text-center text-2xl tracking-widest font-mono"
+                className="w-full px-4 py-3 rounded-2xl outline-none transition-all text-center text-2xl tracking-widest font-mono"
+                style={{ backgroundColor: '#ffecf2', border: '2px solid #fbcce7' }}
                 maxLength={6}
               />
             </div>
@@ -161,55 +165,56 @@ function RoomLobby({ gameId, gameName, onGameStart }) {
   // In a room - show lobby
   return (
     <div className="max-w-md mx-auto p-6">
-      <h2 className="text-2xl font-bold text-gray-800 text-center mb-2 font-heading">
+      <h2 className="text-2xl font-bold text-center mb-2 font-heading" style={{ color: '#ff91af' }}>
         {gameName}
       </h2>
 
       {/* Room Code Display */}
-      <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
-        <p className="text-sm text-gray-500 text-center mb-2">Room Code</p>
-        <p className="text-4xl font-mono font-bold text-pink-500 text-center tracking-widest">
+      <div className="backdrop-blur-sm rounded-3xl shadow-md p-6 mb-6" style={{ backgroundColor: '#ffecf2', border: '1px solid #fbcce7' }}>
+        <p className="text-sm text-center mb-2" style={{ color: '#ff91af' }}>Room Code</p>
+        <p className="text-4xl font-mono font-bold text-center tracking-widest" style={{ color: '#ff91af' }}>
           {roomCode}
         </p>
-        <p className="text-xs text-gray-400 text-center mt-2">
+        <p className="text-xs text-center mt-2" style={{ color: '#ff91af' }}>
           Share this code with your partner!
         </p>
       </div>
 
       {/* Players List */}
-      <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
-        <h3 className="text-lg font-semibold text-gray-800 mb-4">Players</h3>
+      <div className="backdrop-blur-sm rounded-3xl shadow-md p-6 mb-6" style={{ backgroundColor: '#ffecf2', border: '1px solid #fbcce7' }}>
+        <h3 className="text-lg font-semibold text-warm-800 mb-4">Players</h3>
         <div className="space-y-3">
           {playerList.map(([id, player]) => (
             <div
               key={id}
-              className="flex items-center gap-3 p-3 bg-pink-50 rounded-xl"
+              className="flex items-center gap-3 p-3 rounded-2xl"
+              style={{ backgroundColor: '#fbcce7' }}
             >
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-400 to-pink-500 flex items-center justify-center text-white font-bold">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shadow-sm" style={{ backgroundColor: '#ff91af' }}>
                 {player.name.charAt(0).toUpperCase()}
               </div>
               <div className="flex-1">
-                <p className="font-medium text-gray-800">
+                <p className="font-medium text-warm-800">
                   {player.name}
                   {id === playerId && (
-                    <span className="text-xs text-pink-500 ml-2">(You)</span>
+                    <span className="text-xs ml-2" style={{ color: '#ff91af' }}>(You)</span>
                   )}
                 </p>
                 {player.isHost && (
-                  <p className="text-xs text-gray-500">Host</p>
+                  <p className="text-xs text-warm-500">Host</p>
                 )}
               </div>
             </div>
           ))}
 
           {!isRoomFull && (
-            <div className="flex items-center gap-3 p-3 border-2 border-dashed border-pink-200 rounded-xl">
-              <div className="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-300">
+            <div className="flex items-center gap-3 p-3 border-2 border-dashed rounded-2xl" style={{ borderColor: '#fbcce7' }}>
+              <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: '#fbcce7', color: '#ff91af' }}>
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                 </svg>
               </div>
-              <p className="text-gray-400">Waiting for partner...</p>
+              <p style={{ color: '#ff91af' }}>Waiting for partner...</p>
             </div>
           )}
         </div>
@@ -227,8 +232,8 @@ function RoomLobby({ gameId, gameName, onGameStart }) {
             {canStartGame ? 'Start Game' : 'Waiting for partner...'}
           </Button>
         ) : (
-          <div className="text-center p-4 bg-pink-100 rounded-xl">
-            <p className="text-pink-700">
+          <div className="text-center p-4 rounded-2xl" style={{ backgroundColor: '#fbcce7' }}>
+            <p style={{ color: '#ff91af' }}>
               Waiting for host to start the game...
             </p>
           </div>

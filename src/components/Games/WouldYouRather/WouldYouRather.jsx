@@ -57,10 +57,28 @@ function WouldYouRather() {
     if (gameState?.questions) {
       setGameQuestions(gameState.questions);
     }
-    if (gameState?.currentIndex !== undefined) {
+    if (gameState?.currentIndex !== undefined && gameState.currentIndex !== currentQuestionIndex) {
+      // Reset local state when question changes (synced from host)
       setCurrentQuestionIndex(gameState.currentIndex);
+      setSelectedAnswer(null);
+      setShowHeart(false);
     }
-  }, [gameState]);
+  }, [gameState, currentQuestionIndex]);
+
+  // Check if game phase changed (results or playing again)
+  useEffect(() => {
+    if (gameState?.phase === 'results' && gamePhase === 'playing') {
+      setGamePhase('results');
+    }
+    // Handle play again - sync non-host player back to playing
+    if (gameState?.phase === 'playing' && gamePhase === 'results') {
+      setGamePhase('playing');
+      setCurrentQuestionIndex(0);
+      setSelectedAnswer(null);
+      setShowHeart(false);
+      setLocalAnswers({});
+    }
+  }, [gameState?.phase, gamePhase]);
 
   // Check room status for non-host
   useEffect(() => {
@@ -89,29 +107,42 @@ function WouldYouRather() {
     const nextIndex = currentQuestionIndex + 1;
 
     if (nextIndex >= TOTAL_QUESTIONS) {
+      // Update game state to results phase so all players sync
+      await updateGameState({
+        phase: 'results',
+      });
       setGamePhase('results');
       return;
     }
 
-    setSelectedAnswer(null);
-    setShowHeart(false);
-    setCurrentQuestionIndex(nextIndex);
+    // Update the shared game state - all players will sync to this
+    await updateGameState({
+      currentIndex: nextIndex,
+    });
 
-    // Host updates the shared game state
-    if (isHost) {
-      await updateGameState({
-        currentIndex: nextIndex,
-      });
-    }
+    // Local state will be reset by the useEffect when gameState.currentIndex changes
   };
 
-  const handlePlayAgain = () => {
-    setGamePhase('lobby');
+  const handlePlayAgain = async () => {
+    // Generate new set of questions
+    const shuffled = shuffleArray(questions.questions);
+    const selected = shuffled.slice(0, TOTAL_QUESTIONS);
+
+    // Reset local state
     setCurrentQuestionIndex(0);
     setSelectedAnswer(null);
     setShowHeart(false);
     setLocalAnswers({});
-    setGameQuestions([]);
+    setGameQuestions(selected);
+    setGamePhase('playing');
+
+    // Update Firebase with new questions - both players will sync
+    await updateGameState({
+      questions: selected,
+      currentIndex: 0,
+      answers: {},
+      phase: 'playing',
+    });
   };
 
   // Get partner's answers from game state
@@ -126,10 +157,25 @@ function WouldYouRather() {
     return null;
   };
 
+  // Check if all players have answered the current question
+  const allPlayersAnswered = () => {
+    if (!gameState?.answers?.[currentQuestionIndex]) return false;
+    const answers = gameState.answers[currentQuestionIndex];
+    const playerCount = Object.keys(players).length;
+    const answerCount = Object.keys(answers).length;
+    return answerCount >= playerCount && playerCount > 0;
+  };
+
+  // Check if current player has answered
+  const hasPlayerAnswered = () => {
+    if (!gameState?.answers?.[currentQuestionIndex]) return false;
+    return !!gameState.answers[currentQuestionIndex][playerId];
+  };
+
   // Lobby phase
   if (gamePhase === 'lobby') {
     return (
-      <div className="min-h-screen bg-pink-50 py-8">
+      <div className="min-h-screen py-8" style={{ backgroundColor: '#FBFAF2' }}>
         <RoomLobby
           gameId="would-you-rather"
           gameName="Would You Rather"
@@ -144,9 +190,9 @@ function WouldYouRather() {
     const playerList = Object.entries(players);
 
     return (
-      <div className="min-h-screen bg-pink-50 py-8 px-4">
+      <div className="min-h-screen py-8 px-4" style={{ backgroundColor: '#FBFAF2' }}>
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-8 font-heading">
+          <h2 className="text-3xl font-bold text-center mb-8 font-heading" style={{ color: '#ff91af' }}>
             Game Complete!
           </h2>
 
@@ -156,16 +202,16 @@ function WouldYouRather() {
               const partnerAnswer = getPartnerAnswer(index);
 
               return (
-                <div key={q.id} className="bg-white rounded-xl shadow-md p-4">
-                  <p className="text-sm text-gray-500 mb-2">Question {index + 1}</p>
-                  <p className="font-medium text-gray-800 mb-3">{q.question}</p>
+                <div key={q.id} className="rounded-xl shadow-md p-4" style={{ backgroundColor: '#ffecf2', borderColor: '#fbcce7', borderWidth: '1px' }}>
+                  <p className="text-sm mb-2" style={{ color: '#ff91af' }}>Question {index + 1}</p>
+                  <p className="font-medium text-warm-800 mb-3">{q.question}</p>
 
                   <div className="grid grid-cols-2 gap-3">
-                    <div className={`p-3 rounded-lg text-sm ${myAnswer === 'A' ? 'bg-pink-100 border-2 border-pink-400' : 'bg-gray-50'}`}>
+                    <div className={`p-3 rounded-lg text-sm`} style={{ backgroundColor: myAnswer === 'A' ? '#fbcce7' : '#FBFAF2', border: myAnswer === 'A' ? '2px solid #ff91af' : '1px solid #fbcce7' }}>
                       <p className="font-medium mb-1">{q.optionA}</p>
                       <div className="flex gap-1 flex-wrap">
                         {myAnswer === 'A' && (
-                          <span className="text-xs bg-pink-500 text-white px-2 py-0.5 rounded-full">You</span>
+                          <span className="text-xs text-white px-2 py-0.5 rounded-full" style={{ backgroundColor: '#ff91af' }}>You</span>
                         )}
                         {partnerAnswer === 'A' && (
                           <span className="text-xs bg-purple-500 text-white px-2 py-0.5 rounded-full">Partner</span>
@@ -173,11 +219,11 @@ function WouldYouRather() {
                       </div>
                     </div>
 
-                    <div className={`p-3 rounded-lg text-sm ${myAnswer === 'B' ? 'bg-pink-100 border-2 border-pink-400' : 'bg-gray-50'}`}>
+                    <div className={`p-3 rounded-lg text-sm`} style={{ backgroundColor: myAnswer === 'B' ? '#fbcce7' : '#FBFAF2', border: myAnswer === 'B' ? '2px solid #ff91af' : '1px solid #fbcce7' }}>
                       <p className="font-medium mb-1">{q.optionB}</p>
                       <div className="flex gap-1 flex-wrap">
                         {myAnswer === 'B' && (
-                          <span className="text-xs bg-pink-500 text-white px-2 py-0.5 rounded-full">You</span>
+                          <span className="text-xs text-white px-2 py-0.5 rounded-full" style={{ backgroundColor: '#ff91af' }}>You</span>
                         )}
                         {partnerAnswer === 'B' && (
                           <span className="text-xs bg-purple-500 text-white px-2 py-0.5 rounded-full">Partner</span>
@@ -208,19 +254,20 @@ function WouldYouRather() {
 
   if (!currentQuestion) {
     return (
-      <div className="min-h-screen bg-pink-50 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#FBFAF2' }}>
         <div className="text-center">
-          <div className="animate-spin w-12 h-12 border-4 border-pink-500 border-t-transparent rounded-full mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading questions...</p>
+          <div className="animate-spin w-12 h-12 border-4 border-t-transparent rounded-full mx-auto mb-4" style={{ borderColor: '#ff91af', borderTopColor: 'transparent' }}></div>
+          <p style={{ color: '#ff91af' }}>Loading questions...</p>
         </div>
       </div>
     );
   }
 
-  const partnerAnswer = getPartnerAnswer(currentQuestionIndex);
+  const everyoneAnswered = allPlayersAnswered();
+  const partnerAnswer = everyoneAnswered ? getPartnerAnswer(currentQuestionIndex) : null;
 
   return (
-    <div className="min-h-screen bg-pink-50 py-8 px-4">
+    <div className="min-h-screen py-8 px-4" style={{ backgroundColor: '#FBFAF2' }}>
       <div className="max-w-md mx-auto">
         {/* Progress */}
         <div className="mb-8">
@@ -228,8 +275,8 @@ function WouldYouRather() {
         </div>
 
         {/* Question Card */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-6 animate-slide-up">
-          <h2 className="text-2xl font-bold text-gray-800 text-center mb-6 font-heading">
+        <div className="rounded-2xl shadow-lg p-6 mb-6 animate-slide-up" style={{ backgroundColor: '#ffecf2', border: '1px solid #fbcce7' }}>
+          <h2 className="text-2xl font-bold text-warm-800 text-center mb-6 font-heading">
             {currentQuestion.question}
           </h2>
 
@@ -238,22 +285,21 @@ function WouldYouRather() {
             <button
               onClick={() => handleAnswerSelect('A')}
               disabled={selectedAnswer !== null}
-              className={`w-full p-4 rounded-xl text-left transition-all duration-200 ${
-                selectedAnswer === 'A'
-                  ? 'bg-pink-100 border-2 border-pink-500'
-                  : selectedAnswer
-                  ? 'bg-gray-50 border-2 border-gray-200 opacity-60'
-                  : 'bg-white border-2 border-pink-200 hover:border-pink-400 hover:shadow-md'
-              }`}
+              className={`w-full p-4 rounded-xl text-left transition-all duration-200 ${everyoneAnswered && partnerAnswer === 'A' ? 'ring-2 ring-purple-400' : ''}`}
+              style={{
+                backgroundColor: selectedAnswer === 'A' ? '#fbcce7' : selectedAnswer ? '#FBFAF2' : 'white',
+                border: selectedAnswer === 'A' ? '2px solid #ff91af' : '2px solid #fbcce7',
+                opacity: selectedAnswer && selectedAnswer !== 'A' ? 0.6 : 1
+              }}
             >
-              <p className="font-medium text-gray-800">{currentQuestion.optionA}</p>
+              <p className="font-medium text-warm-800">{currentQuestion.optionA}</p>
               {selectedAnswer === 'A' && (
                 <div className="flex items-center gap-2 mt-2">
                   <Heart size="sm" animated={showHeart} />
-                  <span className="text-sm text-pink-500">Your choice</span>
+                  <span className="text-sm" style={{ color: '#ff91af' }}>Your choice</span>
                 </div>
               )}
-              {partnerAnswer === 'A' && (
+              {everyoneAnswered && partnerAnswer === 'A' && (
                 <div className="flex items-center gap-2 mt-2">
                   <span className="text-sm text-purple-500">Partner chose this!</span>
                 </div>
@@ -263,22 +309,21 @@ function WouldYouRather() {
             <button
               onClick={() => handleAnswerSelect('B')}
               disabled={selectedAnswer !== null}
-              className={`w-full p-4 rounded-xl text-left transition-all duration-200 ${
-                selectedAnswer === 'B'
-                  ? 'bg-pink-100 border-2 border-pink-500'
-                  : selectedAnswer
-                  ? 'bg-gray-50 border-2 border-gray-200 opacity-60'
-                  : 'bg-white border-2 border-pink-200 hover:border-pink-400 hover:shadow-md'
-              }`}
+              className={`w-full p-4 rounded-xl text-left transition-all duration-200 ${everyoneAnswered && partnerAnswer === 'B' ? 'ring-2 ring-purple-400' : ''}`}
+              style={{
+                backgroundColor: selectedAnswer === 'B' ? '#fbcce7' : selectedAnswer ? '#FBFAF2' : 'white',
+                border: selectedAnswer === 'B' ? '2px solid #ff91af' : '2px solid #fbcce7',
+                opacity: selectedAnswer && selectedAnswer !== 'B' ? 0.6 : 1
+              }}
             >
-              <p className="font-medium text-gray-800">{currentQuestion.optionB}</p>
+              <p className="font-medium text-warm-800">{currentQuestion.optionB}</p>
               {selectedAnswer === 'B' && (
                 <div className="flex items-center gap-2 mt-2">
                   <Heart size="sm" animated={showHeart} />
-                  <span className="text-sm text-pink-500">Your choice</span>
+                  <span className="text-sm" style={{ color: '#ff91af' }}>Your choice</span>
                 </div>
               )}
-              {partnerAnswer === 'B' && (
+              {everyoneAnswered && partnerAnswer === 'B' && (
                 <div className="flex items-center gap-2 mt-2">
                   <span className="text-sm text-purple-500">Partner chose this!</span>
                 </div>
@@ -287,8 +332,18 @@ function WouldYouRather() {
           </div>
         </div>
 
-        {/* Next Button */}
-        {selectedAnswer && (
+        {/* Waiting for partner */}
+        {selectedAnswer && !everyoneAnswered && (
+          <div className="animate-fade-in text-center py-4">
+            <div className="flex items-center justify-center gap-2" style={{ color: '#ff91af' }}>
+              <div className="animate-spin w-5 h-5 border-2 border-t-transparent rounded-full" style={{ borderColor: '#ff91af', borderTopColor: 'transparent' }}></div>
+              <span>Waiting for partner to choose...</span>
+            </div>
+          </div>
+        )}
+
+        {/* Next Button - only shows when everyone has answered */}
+        {everyoneAnswered && (
           <div className="animate-fade-in">
             <Button onClick={handleNextQuestion} className="w-full" size="lg">
               {currentQuestionIndex < TOTAL_QUESTIONS - 1 ? 'Next Question' : 'See Results'}
