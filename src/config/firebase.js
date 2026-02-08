@@ -1,5 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getDatabase } from 'firebase/database';
+import { getFirestore } from 'firebase/firestore';
+import { getStorage } from 'firebase/storage';
 
 // Firebase configuration
 // TODO: Replace with your Firebase project config from the Firebase Console
@@ -18,5 +20,12 @@ const app = initializeApp(firebaseConfig);
 
 // Initialize Realtime Database
 export const database = getDatabase(app);
+export const rtdb = database; // Alias for convenience
+
+// Initialize Firestore
+export const db = getFirestore(app);
+
+// Initialize Storage
+export const storage = getStorage(app);
 
 export default app;
