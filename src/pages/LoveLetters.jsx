@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { collection, addDoc, getDocs, orderBy, query, serverTimestamp } from 'firebase/firestore';
+import { collection, addDoc, getDocs, deleteDoc, doc, orderBy, query, serverTimestamp } from 'firebase/firestore';
 import { db } from '../config/firebase';
 
 const OPEN_WHEN_OPTIONS = [
@@ -107,6 +107,17 @@ function LoveLetters() {
 
   const handleCloseReading = () => {
     setReadingLetter(null);
+  };
+
+  const handleDeleteLetter = async (e, letter) => {
+    e.stopPropagation();
+    if (!window.confirm('Are you sure you want to delete this letter?')) return;
+    try {
+      await deleteDoc(doc(db, 'letters', letter.id));
+      setSavedLetters(prev => prev.filter(l => l.id !== letter.id));
+    } catch (error) {
+      console.error('Error deleting letter:', error);
+    }
   };
 
   // Reading letter view
@@ -599,6 +610,16 @@ function LoveLetters() {
                 Click to read
               </div>
             )}
+
+            {/* Delete button */}
+            <button
+              onClick={(e) => handleDeleteLetter(e, letter)}
+              className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full shadow-md flex items-center justify-center text-xs font-bold hover:bg-red-600 transition-colors z-30 opacity-0 hover:opacity-100 group-hover:opacity-100"
+              style={{ opacity: hoveredItem === `letter-${letter.id}` ? 1 : 0 }}
+              title="Delete letter"
+            >
+              &times;
+            </button>
           </div>
         );
       })}
