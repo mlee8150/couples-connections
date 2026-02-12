@@ -195,6 +195,19 @@ function LoveLetters() {
             >
               {readingLetter.content}
             </div>
+
+            {/* Delete button */}
+            <div className="flex justify-end pt-4">
+              <button
+                onClick={(e) => {
+                  handleDeleteLetter(e, readingLetter);
+                  setReadingLetter(null);
+                }}
+                className="px-5 py-2 bg-red-500 text-white font-semibold rounded-full shadow-lg hover:bg-red-600 transition-colors"
+              >
+                Delete Letter
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -536,11 +549,6 @@ function LoveLetters() {
           strokeWidth="6"
           strokeLinecap="round"
         />
-        {/* Clothespins/clips on first line */}
-        <rect x="20%" y="31%" width="8" height="16" fill="#DEB887" rx="1" />
-        <rect x="40%" y="27%" width="8" height="16" fill="#DEB887" rx="1" />
-        <rect x="60%" y="23%" width="8" height="16" fill="#DEB887" rx="1" />
-        <rect x="80%" y="19%" width="8" height="16" fill="#DEB887" rx="1" />
 
         {/* Second line: starts high on left, goes down to right */}
         <line
@@ -552,11 +560,6 @@ function LoveLetters() {
           strokeWidth="6"
           strokeLinecap="round"
         />
-        {/* Clothespins/clips on second line */}
-        <rect x="20%" y="54%" width="8" height="16" fill="#DEB887" rx="1" />
-        <rect x="40%" y="58%" width="8" height="16" fill="#DEB887" rx="1" />
-        <rect x="60%" y="62%" width="8" height="16" fill="#DEB887" rx="1" />
-        <rect x="80%" y="66%" width="8" height="16" fill="#DEB887" rx="1" />
       </svg>
 
       {/* Saved letters hanging on clotheslines */}
@@ -611,15 +614,6 @@ function LoveLetters() {
               </div>
             )}
 
-            {/* Delete button */}
-            <button
-              onClick={(e) => handleDeleteLetter(e, letter)}
-              className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full shadow-md flex items-center justify-center text-xs font-bold hover:bg-red-600 transition-colors z-30 opacity-0 hover:opacity-100 group-hover:opacity-100"
-              style={{ opacity: hoveredItem === `letter-${letter.id}` ? 1 : 0 }}
-              title="Delete letter"
-            >
-              &times;
-            </button>
           </div>
         );
       })}
