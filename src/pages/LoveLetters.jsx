@@ -7,13 +7,13 @@ const OPEN_WHEN_OPTIONS = [
   "you can't fall asleep",
   "you're procrastinating",
   "you miss me",
-  "you need a laugh",
-  "you're feeling stressed",
-  "you need motivation",
+  "you want a laugh",
+  "you want to daydream about our future",
+  "you've accomplished something awesome",
   "you're having a bad day",
-  "you want to feel loved",
+
   "you need a reminder of us",
-  "you're feeling lonely",
+
 ];
 
 function LoveLetters() {
