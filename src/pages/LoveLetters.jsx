@@ -19,6 +19,7 @@ const OPEN_WHEN_OPTIONS = [
 function LoveLetters() {
   const navigate = useNavigate();
   const [hoveredItem, setHoveredItem] = useState(null);
+  const [viewingMailbox, setViewingMailbox] = useState(null);
   const [isWriting, setIsWriting] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [animationStage, setAnimationStage] = useState(0);
@@ -107,6 +108,7 @@ function LoveLetters() {
 
   const handleCloseReading = () => {
     setReadingLetter(null);
+    // Stay on the mailbox view if we were viewing one
   };
 
   const handleDeleteLetter = async (e, letter) => {
@@ -186,11 +188,12 @@ function LoveLetters() {
 
             {/* Letter body */}
             <div
-              className="text-warm-800 font-medium whitespace-pre-wrap leading-relaxed min-h-[30vh]"
+              className="text-warm-800 font-medium whitespace-pre-wrap min-h-[30vh]"
               style={{
                 backgroundImage: 'repeating-linear-gradient(transparent, transparent 35px, rgba(255, 145, 175, 0.1) 35px, rgba(255, 145, 175, 0.1) 36px)',
-                backgroundPosition: '0 8px',
+                backgroundPosition: '0 31px',
                 lineHeight: '36px',
+                paddingTop: '4px',
               }}
             >
               {readingLetter.content}
@@ -494,28 +497,63 @@ function LoveLetters() {
     );
   }
 
-  // Calculate positions for letters on clotheslines
-  // Michael's letters go on top line, May's letters go on bottom line
-  const getLetterPosition = (letter, indexOnLine) => {
-    const xPositions = [15, 35, 55, 75]; // % positions along the line
-    const xPos = xPositions[indexOnLine % 4];
+  const michaelLetters = savedLetters.filter(l => l.to === 'Michael');
+  const mayLetters = savedLetters.filter(l => l.to === 'May');
 
-    if (letter.to === 'Michael') {
-      // Top line: slopes from 15% to 35% (right to left)
-      const yPos = 35 - (xPos / 100) * 20;
-      return { x: `${xPos}%`, y: `${yPos + 3}%`, rotation: -5 + Math.random() * 10 };
-    } else {
-      // Bottom line: slopes from 50% to 70% (left to right)
-      const yPos = 50 + (xPos / 100) * 20;
-      return { x: `${xPos}%`, y: `${yPos + 3}%`, rotation: -5 + Math.random() * 10 };
-    }
-  };
+  // Mailbox contents view
+  if (viewingMailbox) {
+    const letters = viewingMailbox === 'Michael' ? michaelLetters : mayLetters;
+    return (
+      <div className="min-h-screen bg-sky-200 relative overflow-hidden p-4">
+        {/* Back button */}
+        <button
+          onClick={() => setViewingMailbox(null)}
+          className="absolute top-4 left-4 z-20 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg text-warm-700 font-medium hover:bg-white transition-colors"
+        >
+          Back
+        </button>
 
-  // Count letters per recipient to determine position on their line
-  const getIndexOnLine = (letter, allLetters) => {
-    const sameTo = allLetters.filter(l => l.to === letter.to);
-    return sameTo.findIndex(l => l.id === letter.id);
-  };
+        {/* Title nameplate */}
+        <div className="flex justify-center pt-16 pb-8">
+          <div className="bg-[#FFF8E7] border border-[#DEB887] rounded-lg shadow-md px-8 py-4 text-center">
+            <h1 className="text-2xl md:text-3xl font-heading font-bold text-amber-900">
+              {viewingMailbox}'s Mailbox
+            </h1>
+            <p className="text-amber-800/70 mt-1">{letters.length} letter{letters.length !== 1 ? 's' : ''}</p>
+          </div>
+        </div>
+
+        {/* Letters grid */}
+        {letters.length === 0 ? (
+          <div className="flex items-center justify-center mt-20">
+            <p className="text-amber-800/60 text-lg font-medium">No letters yet</p>
+          </div>
+        ) : (
+          <div className="max-w-3xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 px-4">
+            {letters.map((letter) => (
+              <div
+                key={letter.id}
+                className="cursor-pointer transition-transform duration-200 hover:scale-110 flex flex-col items-center"
+                onClick={() => handleReadLetter(letter)}
+              >
+                {/* Envelope */}
+                <svg width="100" height="80" viewBox="0 0 100 80">
+                  <rect x="5" y="15" width="90" height="60" rx="3" fill="#FFF8DC" stroke="#DEB887" strokeWidth="1.5" />
+                  <path d="M5 15 L50 45 L95 15 Z" fill="#FFFEF0" stroke="#DEB887" strokeWidth="1.5" />
+                  <circle cx="50" cy="35" r="10" fill="#DC143C" />
+                  <circle cx="50" cy="35" r="8" fill="#B22222" />
+                  <path d="M50 32 C48 30, 45 32, 46 35 L50 39 L54 35 C55 32, 52 30, 50 32" fill="#FFB6C1" />
+                </svg>
+                <div className="bg-white/95 backdrop-blur-sm px-3 py-2 rounded shadow-md text-center mt-1 max-w-[200px]">
+                  <p className="text-warm-600 text-sm text-wrap">Open when {letter.openWhen}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-sky-200 relative overflow-hidden">
@@ -534,92 +572,91 @@ function LoveLetters() {
         </h1>
       </div>
 
-      {/* First clothesline - sloping down from right to left (20% slope) */}
-      <svg
-        className="absolute top-0 left-0 w-full h-full pointer-events-none"
-        preserveAspectRatio="none"
-      >
-        {/* First line: starts high on right, goes down to left */}
-        <line
-          x1="100%"
-          y1="15%"
-          x2="0%"
-          y2="35%"
-          stroke="#8B4513"
-          strokeWidth="6"
-          strokeLinecap="round"
-        />
-
-        {/* Second line: starts high on left, goes down to right */}
-        <line
-          x1="0%"
-          y1="50%"
-          x2="100%"
-          y2="70%"
-          stroke="#8B4513"
-          strokeWidth="6"
-          strokeLinecap="round"
-        />
-      </svg>
-
-      {/* Saved letters hanging on clotheslines */}
-      {savedLetters.map((letter) => {
-        const indexOnLine = getIndexOnLine(letter, savedLetters);
-        const pos = getLetterPosition(letter, indexOnLine);
-        return (
-          <div
-            key={letter.id}
-            className={`absolute cursor-pointer transition-transform duration-200 hover:scale-110 z-10 ${
-              hoveredItem === `letter-${letter.id}` ? 'scale-110' : ''
-            }`}
-            style={{
-              left: pos.x,
-              top: pos.y,
-              transform: `rotate(${pos.rotation}deg)`,
-            }}
-            onClick={() => handleReadLetter(letter)}
-            onMouseEnter={() => setHoveredItem(`letter-${letter.id}`)}
-            onMouseLeave={() => setHoveredItem(null)}
-          >
-            {/* Clothespin */}
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-3 h-6 bg-[#DEB887] rounded-sm z-20" />
-
-            {/* Envelope */}
-            <svg width="100" height="80" viewBox="0 0 100 80">
-              {/* Envelope body */}
-              <rect x="5" y="15" width="90" height="60" rx="3" fill="#FFF8DC" stroke="#DEB887" strokeWidth="1.5" />
-
-              {/* Envelope flap */}
-              <path d="M5 15 L50 45 L95 15 Z" fill="#FFFEF0" stroke="#DEB887" strokeWidth="1.5" />
-
-              {/* Wax seal */}
-              <circle cx="50" cy="35" r="10" fill="#DC143C" />
-              <circle cx="50" cy="35" r="8" fill="#B22222" />
-              <path
-                d="M50 32 C48 30, 45 32, 46 35 L50 39 L54 35 C55 32, 52 30, 50 32"
-                fill="#FFB6C1"
-              />
-            </svg>
-
-            {/* Letter info label */}
-            <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-sm px-2 py-1 rounded shadow-md whitespace-nowrap text-center min-w-[80px]">
-              <p className="text-warm-800 font-semibold text-xs">To: {letter.to}</p>
-              <p className="text-warm-600 text-[10px] truncate max-w-[100px]">Open when {letter.openWhen}</p>
-            </div>
-
-            {/* Hover tooltip */}
-            {hoveredItem === `letter-${letter.id}` && (
-              <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-rose-500 text-white px-3 py-1 rounded-full shadow-lg animate-fade-in whitespace-nowrap text-sm">
-                Click to read
-              </div>
+      {/* Mailboxes area */}
+      <div className="flex items-start justify-center gap-8 md:gap-16 pt-24 px-4 h-[calc(100vh)] relative z-10">
+        {/* Michael's Mailbox */}
+        <div
+          className={`cursor-pointer transition-transform duration-300 flex flex-col items-center flex-1 max-w-[45%] ${hoveredItem === 'mailbox-michael' ? 'scale-[1.03]' : ''}`}
+          onClick={() => setViewingMailbox('Michael')}
+          onMouseEnter={() => setHoveredItem('mailbox-michael')}
+          onMouseLeave={() => setHoveredItem(null)}
+        >
+          <svg className="w-full" style={{ height: '100%' }} viewBox="0 0 160 500" preserveAspectRatio="xMidYMin meet">
+            {/* Post */}
+            <rect x="60" y="120" width="20" height="380" fill="#8B7355" />
+            {/* Mailbox body */}
+            <rect x="10" y="40" width="120" height="80" rx="8" fill="#4A90D9" stroke="#3A70B0" strokeWidth="2" />
+            {/* Rounded top */}
+            <path d="M10 60 Q10 20 70 20 Q130 20 130 60" fill="#4A90D9" stroke="#3A70B0" strokeWidth="2" />
+            {/* Mail slot */}
+            <rect x="35" y="70" width="70" height="6" rx="3" fill="#2A5A8A" />
+            {/* Name */}
+            <text x="70" y="100" textAnchor="middle" fill="white" fontSize="18" fontWeight="bold" fontFamily="serif">Michael</text>
+            {/* Flag - up if letters exist */}
+            {michaelLetters.length > 0 ? (
+              <g>
+                <rect x="130" y="30" width="4" height="40" fill="#8B7355" />
+                <polygon points="134,30 134,50 155,40" fill="#DC143C" />
+              </g>
+            ) : (
+              <g>
+                <rect x="130" y="60" width="4" height="40" fill="#8B7355" />
+                <polygon points="134,80 134,100 155,90" fill="#888" />
+              </g>
             )}
+            {/* Letter count badge */}
+            {michaelLetters.length > 0 && (
+              <g>
+                <circle cx="110" cy="50" r="14" fill="#DC143C" />
+                <text x="110" y="55" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold">{michaelLetters.length}</text>
+              </g>
+            )}
+          </svg>
+        </div>
 
-          </div>
-        );
-      })}
+        {/* May's Mailbox */}
+        <div
+          className={`cursor-pointer transition-transform duration-300 flex flex-col items-center flex-1 max-w-[45%] ${hoveredItem === 'mailbox-may' ? 'scale-[1.03]' : ''}`}
+          onClick={() => setViewingMailbox('May')}
+          onMouseEnter={() => setHoveredItem('mailbox-may')}
+          onMouseLeave={() => setHoveredItem(null)}
+        >
+          <svg className="w-full" style={{ height: '100%' }} viewBox="0 0 160 500" preserveAspectRatio="xMidYMin meet">
+            {/* Post */}
+            <rect x="60" y="120" width="20" height="380" fill="#8B7355" />
+            {/* Mailbox body */}
+            <rect x="10" y="40" width="120" height="80" rx="8" fill="#E8739A" stroke="#C45A7E" strokeWidth="2" />
+            {/* Rounded top */}
+            <path d="M10 60 Q10 20 70 20 Q130 20 130 60" fill="#E8739A" stroke="#C45A7E" strokeWidth="2" />
+            {/* Mail slot */}
+            <rect x="35" y="70" width="70" height="6" rx="3" fill="#B05070" />
+            {/* Name */}
+            <text x="70" y="100" textAnchor="middle" fill="white" fontSize="18" fontWeight="bold" fontFamily="serif">May</text>
+            {/* Flag - up if letters exist */}
+            {mayLetters.length > 0 ? (
+              <g>
+                <rect x="130" y="30" width="4" height="40" fill="#8B7355" />
+                <polygon points="134,30 134,50 155,40" fill="#DC143C" />
+              </g>
+            ) : (
+              <g>
+                <rect x="130" y="60" width="4" height="40" fill="#8B7355" />
+                <polygon points="134,80 134,100 155,90" fill="#888" />
+              </g>
+            )}
+            {/* Letter count badge */}
+            {mayLetters.length > 0 && (
+              <g>
+                <circle cx="110" cy="50" r="14" fill="#DC143C" />
+                <text x="110" y="55" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold">{mayLetters.length}</text>
+              </g>
+            )}
+          </svg>
+        </div>
+      </div>
 
       {/* Writing station - tan box on the right */}
-      <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12">
+      <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-10">
         {/* Tan box/desk */}
         <div className="bg-[#D2B48C] rounded-lg shadow-xl p-6 md:p-8 border-4 border-[#8B7355]">
           {/* Paper and pencil - interactive */}
@@ -683,8 +720,13 @@ function LoveLetters() {
         </div>
       </div>
 
-      {/* Decorative elements */}
-      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-sky-300/50 to-transparent" />
+      {/* Grass */}
+      <svg className="absolute bottom-0 left-0 w-full z-0" viewBox="0 0 1200 120" preserveAspectRatio="none" style={{ height: '480px' }}>
+        {/* Back layer - darker grass */}
+        <path d="M0 120 L0 75 Q30 60 60 72 Q90 58 120 70 Q150 55 180 68 Q210 60 240 72 Q270 56 300 69 Q330 58 360 71 Q390 55 420 68 Q450 60 480 72 Q510 56 540 69 Q570 58 600 71 Q630 55 660 68 Q690 60 720 72 Q750 56 780 69 Q810 58 840 71 Q870 55 900 68 Q930 60 960 72 Q990 56 1020 69 Q1050 58 1080 71 Q1110 55 1140 68 Q1170 60 1200 72 L1200 120 Z" fill="#2D8B4E" />
+        {/* Front layer - lighter grass */}
+        <path d="M0 120 L0 85 Q25 72 50 82 Q75 70 100 80 Q125 68 150 79 Q175 72 200 82 Q225 68 250 80 Q275 70 300 81 Q325 68 350 79 Q375 72 400 82 Q425 68 450 80 Q475 70 500 81 Q525 68 550 79 Q575 72 600 82 Q625 68 650 80 Q675 70 700 81 Q725 68 750 79 Q775 72 800 82 Q825 68 850 80 Q875 70 900 81 Q925 68 950 79 Q975 72 1000 82 Q1025 68 1050 80 Q1075 70 1100 81 Q1125 68 1150 79 Q1175 72 1200 82 L1200 120 Z" fill="#3DA862" />
+      </svg>
     </div>
   );
 }
